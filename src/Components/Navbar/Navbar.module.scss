@@ -1,0 +1,33 @@
+.navbarContainer {
+  width: 100vw;
+  height: 4.5rem;
+  border-bottom: 1px solid slategray;
+  padding: 0.8rem 0.6rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbarStart {
+  display: flex;
+  gap: 1rem;
+}
+
+.navDropDownBtn {
+  border: none;
+  background: none;
+}
+
+.userPrefBtns {
+  display: flex;
+  gap: 1rem;
+
+  .switchLayoutBtn,
+  .switchThemeBtn {
+    background: none;
+    border: 1px solid black;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+}
