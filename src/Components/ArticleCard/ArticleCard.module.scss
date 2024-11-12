@@ -1,0 +1,39 @@
+.articleCardContainer {
+  width: 100vw;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.2rem;
+
+  .articleCardThumbnailContainer {
+    width: 100%;
+    height: 10rem;
+    position: relative;
+
+    .articleCardThumbnail {
+      border-radius: 10px;
+    }
+  }
+
+  .articleMeta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: slategray;
+    margin-top: 1.5rem;
+  }
+
+  .articleMainPreview {
+    margin-top: 0.3rem;
+
+    .articleTitlePreview {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    //don't display for mobile devices.
+    .articleContentPreview {
+      display: none;
+    }
+  }
+}
