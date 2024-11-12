@@ -9,7 +9,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 540px) {
   .articleGridContainer {
     .articleList {
       display: grid;
@@ -18,7 +18,16 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
+  .articleGridContainer {
+    .articleList {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (min-width: 1200px) {
   .articleGridContainer {
     padding: 0 1rem;
     .articleList {
