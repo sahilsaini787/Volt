@@ -12,6 +12,8 @@
 
     .articleCardThumbnail {
       border-radius: 10px;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -34,6 +36,19 @@
     //don't display for mobile devices.
     .articleContentPreview {
       display: none;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .articleCardContainer {
+    .articleMainPreview {
+      .articleContentPreview {
+        display: block;
+        font-size: 0.9rem;
+        padding-top: 0.5rem;
+        color: slategray;
+      }
     }
   }
 }
