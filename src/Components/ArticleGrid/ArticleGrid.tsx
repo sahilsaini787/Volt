@@ -1,7 +1,7 @@
 import ArticleCard from "@/Components/ArticleCard/ArticleCard";
 import styles from "@/Components/ArticleGrid/ArticleGrid.module.scss";
 
-const ArticleGrid = ({}) => {
+const ArticleGrid = () => {
   return (
     <div className={styles.articleGridContainer}>
       <ul className={styles.articleList}>

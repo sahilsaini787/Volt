@@ -1,7 +1,7 @@
 import styles from "@/Components/ArticleCard/ArticleCard.module.scss";
 import Image from "next/image";
 
-const ArticleCard = ({}) => {
+const ArticleCard = () => {
   return (
     <div className={styles.articleCardContainer}>
       <div className={styles.articleCardThumbnailContainer}>

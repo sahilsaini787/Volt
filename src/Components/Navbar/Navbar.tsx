@@ -3,7 +3,7 @@
 // }
 import styles from "@/Components/Navbar/Navbar.module.scss";
 
-const Navbar = ({}) => {
+const Navbar = () => {
   return (
     <div className={styles.navbarRoot}>
       <div className={styles.navbarContainer}>

@@ -4,7 +4,7 @@ import styles from "@/Components/CategoriesBar/CategoriesBar.module.scss";
 import { useQuery } from "@apollo/client";
 import { GET_CATEGORIES } from "@/graphql/queries/getCategories";
 
-const CategoriesBar = ({}) => {
+const CategoriesBar = () => {
   //   const { data, loading, error } = useQuery(GET_CATEGORIES);
 
   return (
