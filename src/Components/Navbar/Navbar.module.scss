@@ -1,33 +1,75 @@
-.navbarContainer {
-  width: 100vw;
+.navbarRoot {
+  width: 100%;
   height: 4.5rem;
   border-bottom: 1px solid slategray;
-  padding: 0.8rem 0.6rem;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  .navbarContainer {
+    width: 100%;
+    height: 100%;
+    padding: 0.8rem 0.6rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .navbarStart {
+      display: flex;
+      gap: 1rem;
+
+      .navbarLogo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+
+        .navbarLogoSVGContainer {
+          .navbarLogoSVG {
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+
+        .navbarLogoText {
+          font-size: 1.5rem;
+          font-weight: 500;
+          user-select: none;
+        }
+      }
+
+      .navDropDownBtn {
+        border: none;
+        background: none;
+        display: none;
+      }
+    }
+
+    .userPrefBtns {
+      display: flex;
+      gap: 1rem;
+
+      .switchLayoutBtn,
+      .switchThemeBtn {
+        background: none;
+        border: 1px solid slategray;
+        padding: 0.5rem;
+        border-radius: 5px;
+        height: 2.4rem;
+        width: 2.4rem;
+      }
+
+      .switchLayoutBtn:hover,
+      .switchThemeBtn:hover {
+        cursor: pointer;
+      }
+    }
+  }
 }
 
-.navbarStart {
-  display: flex;
-  gap: 1rem;
-}
-
-.navDropDownBtn {
-  border: none;
-  background: none;
-}
-
-.userPrefBtns {
-  display: flex;
-  gap: 1rem;
-
-  .switchLayoutBtn,
-  .switchThemeBtn {
-    background: none;
-    border: 1px solid black;
-    padding: 0.5rem;
-    border-radius: 5px;
+@media (min-width: 1024px) {
+  .navbarRoot {
+    .navbarContainer {
+      width: 75%;
+      height: 4.5rem;
+      margin: auto;
+    }
   }
 }
