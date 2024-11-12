@@ -1,0 +1,36 @@
+.categoreisBarContainer {
+  width: 100%;
+  border-bottom: 1px solid #333;
+  padding: 1rem 2rem;
+  margin: auto;
+
+  .categoriesBarList {
+    display: flex;
+    gap: 2rem;
+
+    .categoriesListItem {
+      list-style: none;
+
+      .categoriesListItemLink {
+        text-decoration: none;
+        color: #333333;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .categoreisBarContainer {
+    padding: 1rem 10rem;
+
+    .categoriesListItem {
+      padding: 0.4rem 0.5rem;
+    }
+
+    .categoriesListItem:hover {
+      background-color: #ececec;
+      border-radius: 10px;
+    }
+  }
+}
