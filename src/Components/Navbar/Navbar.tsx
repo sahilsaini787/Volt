@@ -1,10 +1,18 @@
-// type NavbarPropType = {
+"use client";
 
-// }
 import styles from "@/Components/Navbar/Navbar.module.scss";
 import Link from "next/link";
+import { useState } from "react";
+
+type layoutStyle = "List" | "Grid";
 
 const Navbar = () => {
+  const [layout, setLayout] = useState<layoutStyle>("Grid");
+
+  function handleLayout() {
+    if (layout === "Grid") setLayout("List");
+    else setLayout("Grid");
+  }
   return (
     <div className={styles.navbarRoot}>
       <div className={styles.navbarContainer}>
@@ -62,23 +70,44 @@ const Navbar = () => {
 
         <div className={styles.userPrefBtns}>
           <div className={styles.switchLayoutBtnContainer}>
-            <button className={styles.switchLayoutBtn}>
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-[1.2rem] w-[1.2rem] transition-all -rotate-90 scale-0"
-              >
-                <rect width="7" height="7" x="3" y="3" rx="1"></rect>
-                <rect width="7" height="7" x="3" y="14" rx="1"></rect>
-                <path d="M14 4h7"></path>
-                <path d="M14 9h7"></path>
-                <path d="M14 15h7"></path>
-                <path d="M14 20h7"></path>
-              </svg>
+            <button
+              className={styles.switchLayoutBtn}
+              onClick={() => handleLayout()}
+            >
+              {layout === "Grid" ? (
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-[1.2rem] w-[1.2rem] transition-all -rotate-90 scale-0"
+                >
+                  <rect width="7" height="7" x="3" y="3" rx="1"></rect>
+                  <rect width="7" height="7" x="3" y="14" rx="1"></rect>
+                  <path d="M14 4h7"></path>
+                  <path d="M14 9h7"></path>
+                  <path d="M14 15h7"></path>
+                  <path d="M14 20h7"></path>
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all"
+                >
+                  <rect width="7" height="7" x="3" y="3" rx="1"></rect>
+                  <rect width="7" height="7" x="14" y="3" rx="1"></rect>
+                  <rect width="7" height="7" x="14" y="14" rx="1"></rect>
+                  <rect width="7" height="7" x="3" y="14" rx="1"></rect>
+                </svg>
+              )}
             </button>
           </div>
           <div className={styles.switchThemeBtnContainer}>
