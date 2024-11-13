@@ -27,7 +27,6 @@ async function fetchTags() {
             }
           }`,
       }),
-      cache: "no-store",
     });
 
     const { data } = await response.json();

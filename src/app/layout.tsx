@@ -45,7 +45,6 @@ async function fetchCategories() {
           }
         }`,
       }),
-      cache: "no-store",
     });
 
     const { data } = await response.json();
