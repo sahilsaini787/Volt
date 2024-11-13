@@ -13,26 +13,13 @@ body {
 
 .contentWrapper {
   width: 100%;
-  padding: 1rem;
+  padding: 0rem 1rem;
+  padding-bottom: 1rem;
 }
 
-@media (min-width: 540px) {
+@media (min-width: 1200px) {
   .contentWrapper {
-    width: 90%;
-    margin: auto;
-  }
-}
-
-@media (min-width: 928px) {
-  .contentWrapper {
-    width: 80%;
-    margin: auto;
-  }
-}
-
-@media (min-width: 1328px) {
-  .contentWrapper {
-    width: 70%;
+    width: 75%;
     margin: auto;
   }
 }

@@ -23,7 +23,7 @@ const PopularTags = ({ tags }: TagsType) => {
           <div className={styles.tagsListContainer}>
             <ul className={styles.tagsList}>
               {tags.map((tag) => (
-                <li className={styles.tagsListItem}>
+                <li key={tag.id} className={styles.tagsListItem}>
                   <Link href="/tech" className={styles.tagsListItemLink}>
                     {tag.name}
                   </Link>

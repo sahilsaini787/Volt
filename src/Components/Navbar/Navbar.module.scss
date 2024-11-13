@@ -81,28 +81,10 @@
   }
 }
 
-@media (min-width: 540px) {
+@media (min-width: 1200px) {
   .navbarRoot {
     .navbarContainer {
-      width: 90%;
-      margin: auto;
-    }
-  }
-}
-
-@media (min-width: 928px) {
-  .navbarRoot {
-    .navbarContainer {
-      width: 80%;
-      margin: auto;
-    }
-  }
-}
-
-@media (min-width: 1328px) {
-  .navbarRoot {
-    .navbarContainer {
-      width: 70%;
+      width: 75%;
       margin: auto;
     }
   }
