@@ -1,20 +1,36 @@
 import Link from "next/link";
 import styles from "@/Components/CategoriesBar/CategoriesBar.module.scss";
 
-import { useQuery } from "@apollo/client";
-import { GET_CATEGORIES } from "@/graphql/queries/getCategories";
+type categoryType = {
+  id: string;
+  name: string;
+  slug: string;
+  link: string;
+};
 
-const CategoriesBar = () => {
-  //   const { data, loading, error } = useQuery(GET_CATEGORIES);
-
+type categoriesType = {
+  nodes: categoryType[];
+};
+const CategoriesBar = ({ nodes }: categoriesType) => {
   return (
     <div className={styles.categoreisBarContainer}>
       <ul className={styles.categoriesBarList}>
-        {/* {data?.categories.nodes.map((category: any) => (
-          <li key={category.id}>
-            <Link href={category.link}>{category.name}</Link>
-          </li>
-        ))} */}
+        {!nodes ? (
+          <div>Loading...</div>
+        ) : (
+          nodes.map((category: categoryType) =>
+            category.name !== "Uncategorized" ? (
+              <li key={category.id} className={styles.categoriesListItem}>
+                <Link
+                  href={category.slug}
+                  className={styles.categoriesListItemLink}
+                >
+                  {category.name}
+                </Link>
+              </li>
+            ) : null
+          )
+        )}
       </ul>
     </div>
   );

@@ -1,11 +1,14 @@
 .articleGridContainer {
   width: 100%;
   height: fit-content;
+  padding-top: 1.8rem;
 
   .articleList {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
+    row-gap: 3rem;
+    column-gap: 2rem;
   }
 }
 
@@ -20,7 +23,6 @@
 
 @media (min-width: 928px) {
   .articleGridContainer {
-    max-width: 768px;
     margin: auto;
     .articleList {
       display: grid;
@@ -31,7 +33,6 @@
 
 @media (min-width: 1400px) {
   .articleGridContainer {
-    width: 1200px;
     margin: auto;
     padding: 0 1rem;
 

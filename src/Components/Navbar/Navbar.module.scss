@@ -6,7 +6,7 @@
   .navbarContainer {
     width: 100%;
     height: 100%;
-    padding: 0.8rem 0.6rem;
+    padding: 0.8rem 1rem;
 
     display: flex;
     justify-content: space-between;
@@ -14,7 +14,8 @@
 
     .navbarStart {
       display: flex;
-      gap: 1rem;
+      align-items: center;
+      gap: 2rem;
 
       .navbarLogo {
         display: flex;
@@ -35,10 +36,17 @@
         }
       }
 
-      .navDropDownBtn {
-        border: none;
-        background: none;
-        display: none;
+      .navMenuList {
+        display: flex;
+        gap: 2rem;
+
+        .navMenuItem {
+          list-style: none;
+          .navMenuItemLink {
+            text-decoration: none;
+            color: #333;
+          }
+        }
       }
     }
 
@@ -64,11 +72,28 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 540px) {
   .navbarRoot {
     .navbarContainer {
-      width: 75%;
-      height: 4.5rem;
+      width: 90%;
+      margin: auto;
+    }
+  }
+}
+
+@media (min-width: 928px) {
+  .navbarRoot {
+    .navbarContainer {
+      width: 80%;
+      margin: auto;
+    }
+  }
+}
+
+@media (min-width: 1328px) {
+  .navbarRoot {
+    .navbarContainer {
+      width: 70%;
       margin: auto;
     }
   }

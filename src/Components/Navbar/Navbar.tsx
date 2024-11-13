@@ -2,6 +2,7 @@
 
 // }
 import styles from "@/Components/Navbar/Navbar.module.scss";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -38,10 +39,24 @@ const Navbar = () => {
             </div>
             <div className={styles.navbarLogoText}>Volt</div>
           </div>
-          <div className={styles.navDropdownMenu}>
-            <div className={styles.navDropDownBtnContainer}>
-              <button className={styles.navDropDownBtn}>Blogs</button>
-            </div>
+          <div className={styles.navMenu}>
+            <ul className={styles.navMenuList}>
+              <li className={styles.navMenuItem}>
+                <Link href="/blogs" className={styles.navMenuItemLink}>
+                  Blogs
+                </Link>
+              </li>
+              <li className={styles.navMenuItem}>
+                <Link href="/tools" className={styles.navMenuItemLink}>
+                  Tools
+                </Link>
+              </li>
+              <li className={styles.navMenuItem}>
+                <Link href="/learn" className={styles.navMenuItemLink}>
+                  Learn
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
