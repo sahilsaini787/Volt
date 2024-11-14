@@ -1,17 +1,12 @@
-"use client";
-
 import styles from "@/Components/Navbar/Navbar.module.scss";
 import Link from "next/link";
-import { useState } from "react";
 
 type layoutStyle = "List" | "Grid";
 
 const Navbar = () => {
-  const [layout, setLayout] = useState<layoutStyle>("Grid");
-
+  let layout: layoutStyle = "List";
   function handleLayout() {
-    if (layout === "Grid") setLayout("List");
-    else setLayout("Grid");
+    if (layout === "Grid") layout = "List";
   }
   return (
     <div className={styles.navbarRoot}>
