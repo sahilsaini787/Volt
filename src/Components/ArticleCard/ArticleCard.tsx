@@ -1,18 +1,12 @@
 import styles from "@/Components/ArticleCard/ArticleCard.module.scss";
 import Image from "next/image";
-import { ArticleCardPropsType } from "@/Components/ArticleGrid/ArticleGrid";
-import he from "he";
+import { ArticleCardPropsType } from "@/Components/ArticlePreviewSection/ArticlePreviewSection";
+import { parseHTML } from "linkedom";
 
-const parseHTMLparagraph = (articleContent: string) => {
-  const regex = /<p[^>]*>(.*?)<\/p>/gi;
-  const matches = [];
-  let match;
-
-  while ((match = regex.exec(articleContent)) !== null) {
-    const decodedText = he.decode(match[1].trim());
-    matches.push(decodedText);
-  }
-  return matches;
+const parseHTMLParagraphList = (articleContent: string) => {
+  const { document } = parseHTML(articleContent);
+  const pTags = document.querySelectorAll("p");
+  return Array.from(pTags).map((p) => p.textContent?.trim());
 };
 
 function parseDate(publishDate: string) {
@@ -25,21 +19,15 @@ function parseDate(publishDate: string) {
   return publishDateFormat;
 }
 
-function extractParagraphTextList(articleContent: string): string[] {
-  const articleContentTextList = parseHTMLparagraph(articleContent);
-
-  const paragraphTextList = articleContentTextList.filter(
-    (text) => text.trim() !== ""
-  );
-  return paragraphTextList;
-}
-
 function calculateTimeToReadArticle(articleContent: string) {
   const readSpeed = 235; //normal human reading speed per minute
 
   return Math.ceil(
-    extractParagraphTextList(articleContent)
-      .map((paragraphText: string) => paragraphText.trim().split(/\s+/).length)
+    parseHTMLParagraphList(articleContent)
+      .filter(
+        (paragraphText): paragraphText is string => paragraphText !== undefined
+      )
+      .map((paragraphText: string) => paragraphText.split(/\s+/).length)
       .reduce(
         (accumulatedLength: number, curLength: number) =>
           accumulatedLength + curLength,
@@ -61,8 +49,7 @@ const ArticleCard = ({ postData }: { postData: ArticleCardPropsType }) => {
 
   const publishDateFormat = parseDate(publishDate);
   const timeToRead = calculateTimeToReadArticle(articleContent);
-  const articleExcerptText = parseHTMLparagraph(articleExcerpt)[0];
-
+  const articleExcerptText = parseHTMLParagraphList(articleExcerpt)[0];
   return (
     <div className={styles.articleCardContainer}>
       <div className={styles.articleCardThumbnailContainer}>

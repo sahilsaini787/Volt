@@ -1,6 +1,6 @@
 import PopularTags from "@/Components/PopularTags/PopularTags";
 import styles from "./page.module.scss";
-import ArticleGrid from "@/Components/ArticleGrid/ArticleGrid";
+import ArticlePreviewSection from "@/Components/ArticlePreviewSection/ArticlePreviewSection";
 
 async function fetchTags() {
   const apiURL = process.env.GRAPHQL_API_URL;
@@ -45,7 +45,7 @@ export default async function Home() {
 
   return (
     <div className={styles.page}>
-      <ArticleGrid />
+      <ArticlePreviewSection />
       <PopularTags tags={tags} />
     </div>
   );

@@ -1,4 +1,4 @@
-import ArticleGrid from "@/Components/ArticleGrid/ArticleGrid";
+import ArticlePreviewSection from "@/Components/ArticlePreviewSection/ArticlePreviewSection";
 import { notFound } from "next/navigation";
 
 type ParamsType = {
@@ -10,7 +10,7 @@ const page = async ({ params }: ParamsType) => {
   if (!id) {
     notFound();
   }
-  return <ArticleGrid />;
+  return <ArticlePreviewSection />;
 };
 
 export default page;

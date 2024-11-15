@@ -1,5 +1,5 @@
 import ArticleCard from "@/Components/ArticleCard/ArticleCard";
-import styles from "@/Components/ArticleGrid/ArticleGrid.module.scss";
+import styles from "@/Components/ArticlePreviewSection/ArticlePreviewSection.module.scss";
 
 export type ArticleCardPropsType = {
   featuredImage: {
@@ -108,7 +108,7 @@ async function fetchPosts() {
   }
 }
 
-const ArticleGrid = async () => {
+const ArticlePreviewSection = async () => {
   const articlesData = await fetchPosts();
   return (
     <div className={styles.articleGridContainer}>
@@ -125,4 +125,4 @@ const ArticleGrid = async () => {
   );
 };
 
-export default ArticleGrid;
+export default ArticlePreviewSection;
