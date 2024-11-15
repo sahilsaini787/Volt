@@ -2,6 +2,11 @@
   width: 100%;
   height: 4.5rem;
   border-bottom: 1px solid slategray;
+  background: white;
+
+  position: sticky;
+  top: 0px;
+  z-index: 100; //higher z-index so it stays on top of everything
 
   .navbarContainer {
     width: 100%;
