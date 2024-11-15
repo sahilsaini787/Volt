@@ -22,7 +22,7 @@ const CategoriesBar = ({ nodes }: categoriesType) => {
             category.name !== "Uncategorized" ? (
               <li key={category.id} className={styles.categoriesListItem}>
                 <Link
-                  href={category.slug}
+                  href={`/category/${category.slug}`}
                   className={styles.categoriesListItemLink}
                 >
                   {category.name}
