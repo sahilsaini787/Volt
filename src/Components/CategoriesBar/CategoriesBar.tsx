@@ -1,24 +1,18 @@
 import Link from "next/link";
 import styles from "@/Components/CategoriesBar/CategoriesBar.module.scss";
+import { CategoriesType, CategoryType } from "@/lib/types/categories";
+import { fetchCategories } from "@/lib/api/fetcher";
 
-type categoryType = {
-  id: string;
-  name: string;
-  slug: string;
-  link: string;
-};
+const CategoriesBar = async () => {
+  const categories: CategoriesType = await fetchCategories();
 
-type categoriesType = {
-  nodes: categoryType[];
-};
-const CategoriesBar = ({ nodes }: categoriesType) => {
   return (
     <div className={styles.categoreisBarContainer}>
       <ul className={styles.categoriesBarList}>
-        {!nodes ? (
+        {!categories ? (
           <div>Loading...</div>
         ) : (
-          nodes.map((category: categoryType) =>
+          categories.map((category: CategoryType) =>
             category.name !== "Uncategorized" ? (
               <li key={category.id} className={styles.categoriesListItem}>
                 <Link

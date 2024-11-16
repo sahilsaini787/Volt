@@ -5,7 +5,7 @@ type ParamsType = {
   params: Promise<{ id: string }>;
 };
 
-const page = async ({ params }: ParamsType) => {
+const articleCategory = async ({ params }: ParamsType) => {
   const id = (await params).id;
   if (!id) {
     notFound();
@@ -13,4 +13,4 @@ const page = async ({ params }: ParamsType) => {
   return <ArticlePreviewSection />;
 };
 
-export default page;
+export default articleCategory;

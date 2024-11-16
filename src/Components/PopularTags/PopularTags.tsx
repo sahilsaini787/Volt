@@ -1,18 +1,11 @@
 import styles from "@/Components/PopularTags/PopularTags.module.scss";
 import Link from "next/link";
+import { fetchTags } from "@/lib/api/fetcher";
+import { TagsType } from "@/lib/types/tags";
 
-type TagType = {
-  name: string;
-  id: string;
-  slug: string;
-  count: string;
-};
+const PopularTags = async () => {
+  const tags: TagsType = await fetchTags();
 
-type TagsType = {
-  tags: TagType[];
-};
-
-const PopularTags = ({ tags }: TagsType) => {
   return (
     <div className={styles.popularTagsContainer}>
       {tags ? (

@@ -1,5 +1,6 @@
 import ArticleCard from "@/Components/ArticleCard/ArticleCard";
 import styles from "@/Components/ArticlePreviewSection/ArticlePreviewSection.module.scss";
+import { fetchPosts } from "@/lib/api/fetcher";
 
 export type ArticleCardPropsType = {
   featuredImage: {
@@ -36,77 +37,6 @@ export type ArticleCardPropsType = {
     nodes: Array<{ name: string }>;
   };
 };
-
-async function fetchPosts() {
-  const apiURL = process.env.GRAPHQL_API_URL;
-  if (!apiURL) {
-    throw new Error("GraphQL api url is not defined");
-  }
-  try {
-    const response = await fetch(apiURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: `
-        query GetPosts {
-          posts {
-            nodes {
-                featuredImage {
-            node {
-              altText
-              mediaItemUrl
-              mediaDetails {
-                sizes {
-                  sourceUrl
-                  height
-                  width
-                }
-              }
-            }
-          }
-          id
-          title
-          excerpt
-          content
-          slug
-          tags {
-            nodes {
-              name
-            }
-          }
-          author {
-            node {
-              firstName
-              lastName
-              slug
-            }
-          }
-          date
-          modified
-          categories {
-            nodes {
-              name
-            }
-          }
-            }
-          }
-        }
-      `,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const { data } = await response.json();
-    return data.posts.nodes;
-  } catch (error) {
-    console.log("Fetch Error: " + error);
-  }
-}
 
 const ArticlePreviewSection = async () => {
   const articlesData = await fetchPosts();
