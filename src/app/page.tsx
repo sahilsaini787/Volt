@@ -8,7 +8,7 @@ export default async function Home() {
     <div className={styles.contentWrapper}>
       <CategoriesBar />
       <div className={styles.page}>
-        <ArticlePreviewSection />
+        <ArticlePreviewSection category="" tag="" />
         <PopularTags />
       </div>
     </div>

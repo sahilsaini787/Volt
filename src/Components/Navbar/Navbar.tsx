@@ -47,7 +47,7 @@ const Navbar = () => {
           <div className={styles.navMenu}>
             <ul className={styles.navMenuList}>
               <li className={styles.navMenuItem}>
-                <Link href="/blogs" className={styles.navMenuItemLink}>
+                <Link href="/" className={styles.navMenuItemLink}>
                   Blogs
                 </Link>
               </li>

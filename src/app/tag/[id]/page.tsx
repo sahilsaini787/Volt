@@ -8,7 +8,7 @@ type ParamsType = {
   params: Promise<{ id: string }>;
 };
 
-const DisplayPostsByCategory = async ({ params }: ParamsType) => {
+const DisplayPostsByTag = async ({ params }: ParamsType) => {
   const id = (await params).id;
   if (!id) {
     notFound();
@@ -18,11 +18,11 @@ const DisplayPostsByCategory = async ({ params }: ParamsType) => {
     <div className={styles.contentWrapper}>
       <CategoriesBar />
       <div className={styles.page}>
-        <ArticlePreviewSection category={id} tag="" />
+        <ArticlePreviewSection tag={id} category="" />
         <PopularTags />
       </div>
     </div>
   );
 };
 
-export default DisplayPostsByCategory;
+export default DisplayPostsByTag;

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { fetchTags, fetchCategories } from "@/lib/api/fetcher";
+import { fetchTags } from "@/lib/api/tagsFetcher";
+import { fetchCategories } from "@/lib/api/categoryFetcher";
 import { TagsType } from "@/lib/types/tags";
 import { CategoriesType } from "@/lib/types/categories";
 import styles from "@/Components/Footer/Footer.module.scss";
@@ -46,7 +47,10 @@ export default async function Footer() {
             <ul className={styles.footer_tagsList}>
               {tags.map((tag) => (
                 <li key={tag.id} className={styles.footer_tagItemContainer}>
-                  <Link href="/tech" className={styles.footer_tagItem}>
+                  <Link
+                    href={`/tag/${tag.slug}`}
+                    className={styles.footer_tagItem}
+                  >
                     {`${tag.name[0].toUpperCase()}${tag.name.slice(1).toLowerCase()}`}
                   </Link>
                 </li>
@@ -119,7 +123,7 @@ export default async function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/about-us" className={styles.footerResourceLink}>
+              <Link href="/about-us" className={styles.footer_resourceListItem}>
                 About Us
               </Link>
             </li>

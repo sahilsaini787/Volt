@@ -1,6 +1,6 @@
 import ArticleCard from "@/Components/ArticleCard/ArticleCard";
 import styles from "@/Components/ArticlePreviewSection/ArticlePreviewSection.module.scss";
-import { fetchPosts } from "@/lib/api/fetcher";
+import { fetchPosts } from "@/lib/api/postsFetcher";
 
 export type ArticleCardPropsType = {
   featuredImage: {
@@ -38,8 +38,14 @@ export type ArticleCardPropsType = {
   };
 };
 
-const ArticlePreviewSection = async () => {
-  const articlesData = await fetchPosts();
+const ArticlePreviewSection = async ({
+  category,
+  tag,
+}: {
+  category: string;
+  tag: string;
+}) => {
+  const articlesData = await fetchPosts(category, tag);
   return (
     <div className={styles.articleGridContainer}>
       <ul className={styles.articleList}>

@@ -1,6 +1,6 @@
 import styles from "@/Components/PopularTags/PopularTags.module.scss";
 import Link from "next/link";
-import { fetchTags } from "@/lib/api/fetcher";
+import { fetchTags } from "@/lib/api/tagsFetcher";
 import { TagsType } from "@/lib/types/tags";
 
 const PopularTags = async () => {
@@ -17,7 +17,10 @@ const PopularTags = async () => {
             <ul className={styles.tagsList}>
               {tags.map((tag) => (
                 <li key={tag.id} className={styles.tagsListItem}>
-                  <Link href="/tech" className={styles.tagsListItemLink}>
+                  <Link
+                    href={`/tag/${tag.slug}`}
+                    className={styles.tagsListItemLink}
+                  >
                     {tag.name}
                   </Link>
                   <div className={styles.tagsCount}>· {tag.count}</div>

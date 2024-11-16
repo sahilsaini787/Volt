@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "@/Components/CategoriesBar/CategoriesBar.module.scss";
 import { CategoriesType, CategoryType } from "@/lib/types/categories";
-import { fetchCategories } from "@/lib/api/fetcher";
+import { fetchCategories } from "@/lib/api/categoryFetcher";
 
 const CategoriesBar = async () => {
   const categories: CategoriesType = await fetchCategories();
