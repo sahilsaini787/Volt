@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import styles from "@/app/page.module.scss";
 import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
 import PopularTags from "@/Components/PopularTags/PopularTags";
+import { CategoriesType } from "@/lib/types/categories";
+import { fetchCategories } from "@/lib/api/categoryFetcher";
 
 type ParamsType = {
   params: Promise<{ id: string }>;
@@ -13,10 +15,11 @@ const DisplayPostsByCategory = async ({ params }: ParamsType) => {
   if (!id) {
     notFound();
   }
+  const categories: CategoriesType = await fetchCategories();
 
   return (
     <div className={styles.contentWrapper}>
-      <CategoriesBar />
+      <CategoriesBar categories={categories} />
       <div className={styles.page}>
         <ArticlePreviewSection category={id} tag="" />
         <PopularTags />

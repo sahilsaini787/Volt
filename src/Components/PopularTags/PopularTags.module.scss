@@ -1,13 +1,14 @@
 .popularTagsContainer {
   width: 35%;
   padding-left: 2rem;
-  display: block;
+  display: none;
   background: white;
 
   .popularTagsHeader {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #555;
     padding-bottom: 0.6rem;
+    font-weight: 600;
   }
 
   .tagsListContainer {

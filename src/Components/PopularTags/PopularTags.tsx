@@ -11,7 +11,7 @@ const PopularTags = async () => {
       {tags ? (
         <>
           <div className={styles.popularTagsHeader}>
-            <h3>Popular Tags</h3>
+            <span>Popular Tags</span>
           </div>
           <div className={styles.tagsListContainer}>
             <ul className={styles.tagsList}>
