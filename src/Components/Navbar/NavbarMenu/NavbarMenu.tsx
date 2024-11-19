@@ -46,9 +46,12 @@ export default function NavbarMenu() {
           <li
             key={menuItem.href}
             className={`${styles.navMenuItem} ${activeTab === menuItem.href ? styles.activeMenuTab : ""}`}
-            onClick={() => handleActiveTab(menuItem.href)}
           >
-            <Link href={menuItem.href} className={styles.navMenuItemLink}>
+            <Link
+              href={menuItem.href}
+              className={styles.navMenuItemLink}
+              onClick={() => handleActiveTab(menuItem.href)}
+            >
               {menuItem.title}
             </Link>
           </li>

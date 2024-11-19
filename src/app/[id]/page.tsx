@@ -15,8 +15,7 @@ const DisplayPostsByCategory = async ({ params }: ParamsType) => {
   if (!id) {
     notFound();
   }
-  let categories: CategoriesType;
-  categories = await fetchCategories();
+  const categories: CategoriesType = await fetchCategories();
 
   switch (id) {
     case "":
