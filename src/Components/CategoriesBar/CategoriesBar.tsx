@@ -12,8 +12,8 @@ const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
     <div className={styles.categoreisBarContainer}>
       <div
         className={styles.showCategoriesBarBtnContainer}
-        onMouseOver={() => setShowDorpdownMenu(true)}
-        onMouseOut={() => setShowDorpdownMenu(false)}
+        onPointerOver={() => setShowDorpdownMenu(true)}
+        onPointerOut={() => setShowDorpdownMenu(false)}
       >
         <button
           className={styles.showCategoriesBarBtn}

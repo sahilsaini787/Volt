@@ -1,13 +1,8 @@
 import styles from "@/Components/Navbar/Navbar.module.scss";
 import Link from "next/link";
-
-// type layoutStyle = "List" | "Grid";
+import NavbarMenu from "./NavbarMenu/NavbarMenu";
 
 const Navbar = () => {
-  // let layout: layoutStyle = "List";
-  // function handleLayout() {
-  //   if (layout === "Grid") layout = "List";
-  // }
   return (
     <div className={styles.navbarRoot}>
       <div className={styles.navbarContainer}>
@@ -44,25 +39,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <div className={styles.navMenu}>
-            <ul className={styles.navMenuList}>
-              <li className={styles.navMenuItem}>
-                <Link href="/" className={styles.navMenuItemLink}>
-                  Blogs
-                </Link>
-              </li>
-              <li className={styles.navMenuItem}>
-                <Link href="/tools" className={styles.navMenuItemLink}>
-                  Tools
-                </Link>
-              </li>
-              <li className={styles.navMenuItem}>
-                <Link href="/learn" className={styles.navMenuItemLink}>
-                  Learn
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <NavbarMenu />
         </div>
 
         <div className={styles.userPrefBtns}>

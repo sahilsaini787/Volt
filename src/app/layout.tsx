@@ -28,9 +28,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Navbar />
-        {children}
-        <Footer />
+        <div className="mainAppContainer">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
