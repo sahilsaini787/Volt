@@ -40,7 +40,6 @@ export default function NavbarMenu() {
   function handleActiveTab(menuItem: string) {
     setActiveTab(menuItem);
   }
-  let hoverTimer: any = 0;
   return (
     <div
       className={styles.navMenu}
