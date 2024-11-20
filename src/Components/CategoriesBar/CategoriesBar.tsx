@@ -16,7 +16,7 @@ const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
         onPointerOut={() => setShowDorpdownMenu(false)}
       >
         <button
-          className={styles.showCategoriesBarBtn}
+          className={`${styles.showCategoriesBarBtn} ${showDropdownMenu ? styles.animateDropdownSVG_Up : styles.animateDropdownSVG_Down}`}
           onClick={() => setShowDorpdownMenu(!showDropdownMenu)}
         >
           Categories
