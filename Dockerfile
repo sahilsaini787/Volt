@@ -1,27 +1,40 @@
-#some comments here to help me out 
+FROM node:20.18-alpine AS base
 
-#defining base img
-FROM node:20.18-alpine
+FROM base AS deps
 
-#setting work dir
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-#copy package.json file
-COPY package*.json ./
+COPY package.json ./
 
-#install dependencies
 RUN npm install
 
-#copying all the remaining file here
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-#build the app
 RUN npm run build
 
-# Expose the port 
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
 EXPOSE 3000
 
-# Start the app
-CMD ["npm", "start"]
+ENV PORT=3000
 
-
+CMD ["node", "server.js"]
