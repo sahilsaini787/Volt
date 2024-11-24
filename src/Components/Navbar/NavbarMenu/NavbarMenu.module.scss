@@ -48,13 +48,13 @@
     }
   }
 
-  .showNavMenuList {
+  .showNavMenuDropdownList {
     display: flex;
   }
-  .removeNavMenuListAnimation {
+  .removeNavMenuDropdownListAnimation {
     animation: scaleDown 0.4s ease forwards;
   }
-  .showNavMenuListAnimation {
+  .showNavMenuDropdownListAnimation {
     animation: scaleUp 0.4s ease forwards;
   }
 

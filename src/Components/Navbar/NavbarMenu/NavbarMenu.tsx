@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import styles from "@/Components/Navbar/NavbarMenu/NavbarMenu.module.scss";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const menuList = [
   { id: crypto.randomUUID(), title: "Blogs", href: "/" },
@@ -21,21 +21,6 @@ const menuList = [
 export default function NavbarMenu() {
   const [activeTab, setActiveTab] = useState<string>("");
   const [showDropdownMenu, setShowDorpdownMenu] = useState<boolean>(false);
-
-  //get activeTab on page reload
-  useEffect(() => {
-    const savedState = sessionStorage.getItem("activeTab");
-    if (savedState) {
-      setActiveTab(savedState);
-    }
-  }, []);
-
-  //set activeTab in localstorage every time state changes
-  useEffect(() => {
-    if (activeTab !== null) {
-      sessionStorage.setItem("activeTab", activeTab);
-    }
-  }, [activeTab]);
 
   function handleActiveTab(menuItem: string) {
     setActiveTab(menuItem);
@@ -68,14 +53,19 @@ export default function NavbarMenu() {
         </svg>
       </button>
       <ul
-        className={`${styles.navMenuList} ${showDropdownMenu ? styles.showNavMenuList : ""}
-        ${showDropdownMenu ? styles.showNavMenuListAnimation : styles.removeNavMenuListAnimation}`}
+        className={`${styles.navMenuList} ${showDropdownMenu ? styles.showNavMenuDropdownList : ""}
+        ${showDropdownMenu ? styles.showNavMenuDropdownListAnimation : styles.removeNavMenuDropdownListAnimation}`}
       >
         {menuList.map((menuItem) => (
           <li key={menuItem.href} className={styles.navMenuItem}>
+            {/* 
+              Apply tab highlighting initially on root tab ('/').
+              Similarly highlight appropriate tab on switching.
+            */}
             <Link
               href={menuItem.href}
-              className={`${styles.navMenuItemLink} ${activeTab === menuItem.href ? styles.activeMenuTab : ""}`}
+              className={`${styles.navMenuItemLink} ${activeTab === menuItem.href ? styles.activeMenuTab : ""}
+              ${activeTab === "" ? (menuItem.href === "/" ? styles.activeMenuTab : "") : ""}`}
               onClick={() => handleActiveTab(menuItem.href)}
             >
               {menuItem.title}

@@ -4,7 +4,7 @@ export async function fetchPosts(
 ) {
   const postsQuery: string = `
 query GetPosts($category: String, $tag: String) {
-   posts(where: { categoryName: $category, tag: $tag }) {
+   posts(where: { categoryName: $category, tag: $tag }, first: 60) {
      nodes {
        featuredImage {
          node {

@@ -1,40 +1,12 @@
 import styles from "@/Components/ArticleCard/ArticleCard.module.scss";
 import Image from "next/image";
 import { ArticleCardPropsType } from "@/Components/ArticlePreviewSection/ArticlePreviewSection";
-import { parseHTML } from "linkedom";
-
-const parseHTMLParagraphList = (articleContent: string) => {
-  const { document } = parseHTML(articleContent);
-  const pTags = document.querySelectorAll("p");
-  return Array.from(pTags).map((p) => p.textContent?.trim());
-};
-
-function parseDate(publishDate: string) {
-  const dateObject = new Date(publishDate);
-  const publishDateFormat = dateObject.toLocaleString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-  return publishDateFormat;
-}
-
-function calculateTimeToReadArticle(articleContent: string) {
-  const readSpeed = 235; //normal human reading speed per minute
-
-  return Math.ceil(
-    parseHTMLParagraphList(articleContent)
-      .filter(
-        (paragraphText): paragraphText is string => paragraphText !== undefined
-      )
-      .map((paragraphText: string) => paragraphText.split(/\s+/).length)
-      .reduce(
-        (accumulatedLength: number, curLength: number) =>
-          accumulatedLength + curLength,
-        0
-      ) / readSpeed
-  );
-}
+import Link from "next/link";
+import {
+  parseDate,
+  calculateTimeToReadArticle,
+  parseHTMLParagraphList,
+} from "@/utils/HTMLParser";
 
 const ArticleCard = ({ postData }: { postData: ArticleCardPropsType }) => {
   const {
@@ -45,13 +17,14 @@ const ArticleCard = ({ postData }: { postData: ArticleCardPropsType }) => {
     title: articleTitle,
     excerpt: articleExcerpt,
     content: articleContent,
+    slug: slug,
   } = postData;
 
   const publishDateFormat = parseDate(publishDate);
   const timeToRead = calculateTimeToReadArticle(articleContent);
   const articleExcerptText = parseHTMLParagraphList(articleExcerpt)[0];
   return (
-    <div className={styles.articleCardContainer}>
+    <Link href={`/article/${slug}`} className={styles.articleCardContainer}>
       <div className={styles.articleCardThumbnailContainer}>
         <Image
           src={thumbnailURL}
@@ -71,7 +44,7 @@ const ArticleCard = ({ postData }: { postData: ArticleCardPropsType }) => {
         <div className={styles.articleTitlePreview}>{articleTitle}</div>
         <div className={styles.articleContentPreview}>{articleExcerptText}</div>
       </div>
-    </div>
+    </Link>
   );
 };
 

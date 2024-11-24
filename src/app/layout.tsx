@@ -3,6 +3,19 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/Components/Navbar/Navbar";
 import Footer from "@/Components/Footer/Footer";
+import { Roboto, Source_Serif_4 } from "next/font/google";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-roboto",
+});
+
+const sourceSerif4 = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["200", "400", "700"],
+  variable: "--font-source-serif-4",
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,7 +40,9 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${sourceSerif4.variable}`}
+      >
         <div className="mainAppContainer">
           <Navbar />
           {children}
