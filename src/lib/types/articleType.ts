@@ -8,6 +8,7 @@ export type articleType = {
       lastName: string | null;
       slug: string | null;
       id: string;
+      description: string | null;
       avatar: {
         url: string | null;
       } | null;

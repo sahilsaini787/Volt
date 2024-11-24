@@ -26,6 +26,7 @@ export default function ArticlePage({ article }: { article: articleType }) {
       lastName: authorLastName,
       slug: authorSlug,
       id: authorId,
+      description: authorDescription,
       avatar: authorAvatar,
     } = {},
   } = author || {};
@@ -59,7 +60,7 @@ export default function ArticlePage({ article }: { article: articleType }) {
             style={{ objectFit: "cover" }}
             alt="author_avatar"
             className={styles.authorAvatar}
-          />{" "}
+          />
         </div>
         <div className={styles.articleAndAuthorMeta}>
           <div className={styles.articleAuthor}>
@@ -77,6 +78,32 @@ export default function ArticlePage({ article }: { article: articleType }) {
         className={styles.mainArticleContent}
         dangerouslySetInnerHTML={{ __html: updatedArticleContent }}
       />
+      <div className={styles.underlineSeperator}></div>
+      <div className={styles.articleCredits}>
+        <div className={styles.authorAvatarCreditsContainer}>
+          <Image
+            src={authorAvatar?.url || ""}
+            fill={true}
+            style={{ objectFit: "cover" }}
+            alt="author_avatar"
+            className={styles.authorAvatarCredits}
+          />
+        </div>
+        <div className={styles.authorTitleCredits}>
+          Written By {`${authorFirstName} ${authorLastName}`}
+        </div>
+        <div className={styles.authorDescriptionCredits}>
+          {authorDescription}
+        </div>
+        <div className={styles.authorHomepageContainerCredits}>
+          <Link
+            href={`/author/${authorSlug}`}
+            className={styles.authorHomepageCredits}
+          >
+            See All From {`${authorFirstName} ${authorLastName}`}
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

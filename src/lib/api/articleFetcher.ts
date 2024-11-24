@@ -11,6 +11,7 @@ query getArticle($slug: ID!) {
         lastName
         slug
         id
+        description
         avatar {
           url
         }
