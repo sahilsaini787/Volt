@@ -1,0 +1,27 @@
+$button-size: 2.5rem;
+$primary-color: #000;
+
+.backToTopButton {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: $button-size;
+  height: $button-size;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  visibility: hidden;
+  font-size: 1rem;
+  z-index: 1000;
+
+  &.visible {
+    visibility: visible;
+  }
+}

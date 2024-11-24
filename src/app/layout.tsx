@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/Components/Navbar/Navbar";
 import Footer from "@/Components/Footer/Footer";
+import BackToTopButton from "@/Components/BackToTop/BackToTop";
 import { Roboto, Source_Serif_4 } from "next/font/google";
 
 const roboto = Roboto({
@@ -46,6 +47,7 @@ export default async function RootLayout({
         <div className="mainAppContainer">
           <Navbar />
           {children}
+          <BackToTopButton />
           <Footer />
         </div>
       </body>
