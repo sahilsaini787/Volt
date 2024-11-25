@@ -22,7 +22,7 @@ const DisplayPostsByCategory = async ({ params }: ParamsType) => {
     <div className={styles.contentWrapper}>
       <CategoriesBar categories={categories} />
       <div className={styles.page}>
-        <ArticlePreviewSection category={id} tag="" />
+        <ArticlePreviewSection category="" tag={id} />
         <PopularTags />
       </div>
     </div>
