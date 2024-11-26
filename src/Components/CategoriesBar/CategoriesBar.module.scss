@@ -1,0 +1,151 @@
+.categoreisBarContainer {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  padding-bottom: 0;
+  margin: auto;
+
+  .showCategoriesBarBtnContainer {
+    width: fit-content;
+
+    .showCategoriesBarBtn {
+      border: none;
+      background: none;
+      font-size: 1rem;
+      padding: 0.5rem;
+
+      .dropdownBtnSVG {
+        width: 0.9rem;
+        height: 0.9rem;
+        position: relative;
+        top: 3px;
+        left: 2px;
+      }
+
+      .animateDropdownSVG_Up {
+        animation: hoverAnim 0.5s ease forwards;
+      }
+
+      .animateDropdownSVG_Down {
+        animation: unhoverAnim 0.5s ease;
+      }
+    }
+
+    .categoriesBarList {
+      width: fit-content;
+      padding: 1.8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      row-gap: 2.5rem;
+      color: #666;
+      border-radius: 8px;
+      background-color: #f7f9fd;
+      position: absolute;
+      z-index: 1000;
+      font-weight: 500;
+
+      .categoriesListItem {
+        list-style: none;
+
+        .categoriesListItemLink {
+          text-decoration: none;
+          color: #6c6c6c;
+          font-size: 1rem;
+        }
+      }
+    }
+    .removeCategoriesBarList {
+      display: none;
+    }
+
+    .showCategoriesBarList {
+      display: flex;
+    }
+    .removeCategoriesListAnimation {
+      animation: scaleDown 0.4s ease forwards;
+      animation-delay: 0.4s;
+    }
+    .showCategoriesListAnimation {
+      animation: scaleUp 0.4s ease forwards;
+    }
+  }
+}
+
+@media (min-width: 928px) {
+  .categoreisBarContainer {
+    border-bottom: 1px solid #9d9d9d;
+    padding-bottom: 1rem;
+
+    .showCategoriesBarBtnContainer {
+      .showCategoriesBarBtn {
+        display: none;
+      }
+
+      .categoriesBarList {
+        width: fit-content;
+        padding: 0;
+        flex-direction: row;
+        row-gap: 0;
+        column-gap: 1rem;
+        color: #666;
+        border-radius: 0px;
+        background-color: white;
+
+        position: static;
+        z-index: 0;
+      }
+      .removeCategoriesBarList,
+      .showCategoriesBarList {
+        display: flex;
+      }
+    }
+
+    .categoriesListItem {
+      padding: 0.5rem 0.6rem;
+    }
+
+    .categoriesListItem:hover {
+      background-color: #ececec;
+      color: #252525;
+      border-radius: 10px;
+    }
+  }
+}
+
+@media (max-width: 928px) {
+  @keyframes hoverAnim {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+
+  @keyframes unhoverAnim {
+    0% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes scaleUp {
+    0% {
+      scale: 0.8;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+
+  @keyframes scaleDown {
+    0% {
+      scale: 1;
+    }
+
+    100% {
+      scale: 0.8;
+    }
+  }
+}

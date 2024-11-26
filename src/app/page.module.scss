@@ -1,0 +1,19 @@
+.page {
+  font-family: var(--font-geist-sans);
+  padding-top: 1.8rem;
+
+  display: flex;
+}
+
+.contentWrapper {
+  width: 100%;
+  padding: 0rem 1rem;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 1200px) {
+  .contentWrapper {
+    width: 75%;
+    margin: auto;
+  }
+}

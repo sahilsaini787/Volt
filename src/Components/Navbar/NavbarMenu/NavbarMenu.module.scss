@@ -1,0 +1,146 @@
+.navMenu {
+  .activeNavMenuItem {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    padding: 1rem;
+
+    .dropdownBtnSVG {
+      width: 0.9rem;
+      height: 0.9rem;
+      position: relative;
+      top: 3px;
+      left: 2px;
+    }
+  }
+
+  .animateDropdownSVG_Up {
+    animation: hoverAnim 0.5s ease forwards;
+  }
+
+  .animateDropdownSVG_Down {
+    animation: unhoverAnim 0.5s ease;
+  }
+
+  .navMenuList {
+    display: none;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 1rem;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
+    background-color: #f7f9fd;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 1000;
+    color: #666;
+    width: fit-content;
+
+    .navMenuItem {
+      list-style: none;
+
+      .navMenuItemLink {
+        display: block;
+        text-decoration: none;
+        color: #333;
+        padding: 0.6rem;
+      }
+    }
+  }
+
+  .showNavMenuDropdownList {
+    display: flex;
+  }
+  .removeNavMenuDropdownListAnimation {
+    animation: scaleDown 0.4s ease forwards;
+  }
+  .showNavMenuDropdownListAnimation {
+    animation: scaleUp 0.4s ease forwards;
+  }
+
+  @media (min-width: 928px) {
+    .navMenuList {
+      display: flex;
+      flex-direction: row;
+      row-gap: 0rem;
+      padding: 1rem;
+      padding-top: 0rem;
+      padding-bottom: 0rem;
+      background: none;
+      border-radius: 8px;
+      position: static;
+      z-index: 1000;
+      color: #666;
+      width: fit-content;
+      margin-top: 0;
+
+      .navMenuItem {
+        margin-right: 1rem;
+        padding: 0.6rem;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        .navMenuItemLink {
+          &:hover,
+          &:active {
+            background-color: #efefef;
+            border-radius: 8px;
+          }
+        }
+      }
+
+      .activeMenuTab {
+        background-color: #efefef;
+        border-radius: 8px;
+      }
+    }
+
+    .activeNavMenuItem {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 928px) {
+  @keyframes hoverAnim {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+
+  @keyframes unhoverAnim {
+    0% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes scaleUp {
+    0% {
+      scale: 0.8;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+
+  @keyframes scaleDown {
+    0% {
+      scale: 1;
+    }
+
+    100% {
+      scale: 0.8;
+    }
+  }
+}
