@@ -1,0 +1,20 @@
+.userPrefBtns {
+  display: flex;
+  gap: 1rem;
+
+  .switchLayoutBtn,
+  .switchThemeBtn {
+    background: none;
+    border: 1px solid slategray;
+    padding: 0.5rem;
+    border-radius: 5px;
+    height: 2.4rem;
+    width: 2.4rem;
+  }
+
+  .switchLayoutBtn:hover,
+  .switchThemeBtn:hover {
+    cursor: pointer;
+    background-color: #efefef;
+  }
+}

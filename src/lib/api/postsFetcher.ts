@@ -47,7 +47,7 @@ query GetPosts($category: String, $tag: String) {
    }
  }
 `;
-
+  //for accessing api on client side append with NEXT_PUBLIC_
   const apiURL = process.env.GRAPHQL_API_URL;
   if (!apiURL) {
     throw new Error("GraphQL api url is not defined");

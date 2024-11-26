@@ -1,4 +1,6 @@
-.articleCardContainer {
+//Grid Layout
+
+.articleCardContainerGrid {
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -36,7 +38,7 @@
 }
 
 @media (min-width: 728px) {
-  .articleCardContainer {
+  .articleCardContainerGrid {
     .articleMainPreview {
       .articleContentPreview {
         font-size: 0.9rem;
@@ -56,6 +58,102 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: normal;
+      }
+    }
+  }
+}
+
+//List Layout
+.articleCardContainerList {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  align-items: center;
+  height: 6rem;
+  gap: 1rem;
+
+  .articleCardThumbnailContainer {
+    position: relative;
+    height: 80%;
+    width: 10rem;
+
+    .articleCardThumbnail {
+      border-radius: 10px;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .articleTextContentPreview {
+    width: 100%;
+    .articleMeta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: slategray;
+    }
+
+    .articleMainPreview {
+      margin-top: 0.3rem;
+
+      .articleTitlePreview {
+        font-size: 1.1rem;
+        font-weight: 500;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+      }
+
+      //don't display for mobile devices.
+      .articleContentPreview {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 728px) {
+  .articleCardContainerList {
+    padding-bottom: 1.4rem;
+    height: 9rem;
+
+    .articleCardThumbnailContainer {
+      position: relative;
+      height: 100%;
+      width: 8rem;
+
+      .articleCardThumbnail {
+        border-radius: 10px;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .articleTextContentPreview {
+      .articleMainPreview {
+        .articleContentPreview {
+          font-size: 0.9rem;
+          padding-top: 0.5rem;
+          color: slategray;
+          -webkit-line-clamp: 3;
+        }
+
+        .articleTitlePreview {
+          -webkit-line-clamp: 2;
+        }
+
+        .articleContentPreview,
+        .articleTitlePreview {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: normal;
+        }
       }
     }
   }

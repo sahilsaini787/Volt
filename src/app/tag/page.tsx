@@ -1,4 +1,4 @@
-import ArticlePreviewSection from "@/Components/ArticlePreviewSection/ArticlePreviewSection";
+import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
 import { notFound } from "next/navigation";
 import styles from "@/app/page.module.scss";
 import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
@@ -22,7 +22,7 @@ const DisplayPostsByCategory = async ({ params }: ParamsType) => {
     <div className={styles.contentWrapper}>
       <CategoriesBar categories={categories} />
       <div className={styles.page}>
-        <ArticlePreviewSection category="" tag={id} />
+        <ArticlePreviewSectionWrapper category="" tag={id} />
         <PopularTags />
       </div>
     </div>
