@@ -1,13 +1,16 @@
+"use client";
+
 import styles from "@/Components/PopularTags/PopularTags.module.scss";
 import Link from "next/link";
-import { fetchTags } from "@/lib/api/tagsFetcher";
 import { TagsType } from "@/lib/types/tags";
+import { useUserContext } from "@/context/UserPrefsContext";
 
-const PopularTags = async () => {
-  const tags: TagsType = await fetchTags();
-
+const PopularTags = ({ tags }: { tags: TagsType }) => {
+  const { themeMode } = useUserContext();
   return (
-    <div className={styles.popularTagsContainer}>
+    <div
+      className={`${styles.popularTagsContainer} ${themeMode === "light" ? styles.lightMode : styles.darkMode}`}
+    >
       {tags ? (
         <>
           <div className={styles.popularTagsHeader}>

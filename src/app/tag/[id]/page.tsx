@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import styles from "@/app/page.module.scss";
 import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
-import PopularTags from "@/Components/PopularTags/PopularTags";
+import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
 import { CategoriesType } from "@/lib/types/categories";
 import { fetchCategories } from "@/lib/api/categoryFetcher";
 import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
@@ -22,7 +22,7 @@ const DisplayPostsByTag = async ({ params }: ParamsType) => {
       <CategoriesBar categories={categories} />
       <div className={styles.page}>
         <ArticlePreviewSectionWrapper category="" tag={id} />
-        <PopularTags />
+        <PopularTagsWrapper />
       </div>
     </div>
   );

@@ -1,11 +1,18 @@
+"use client";
+
 import styles from "@/Components/Navbar/Navbar.module.scss";
 import Link from "next/link";
 import NavbarMenu from "@/Components/Navbar/NavbarMenu/NavbarMenu";
 import UserPrefs from "@/Components/Navbar/UserPrefs/UserPrefs";
+import { useUserContext } from "@/context/UserPrefsContext";
 
 const Navbar = () => {
+  const { themeMode } = useUserContext();
+
   return (
-    <div className={styles.navbarRoot}>
+    <div
+      className={`${styles.navbarRoot} ${themeMode === "light" ? styles.lightMode : styles.darkMode}`}
+    >
       <div className={styles.navbarContainer}>
         <div className={styles.navbarStart}>
           <Link href="/" className={styles.navbarStartLink}>

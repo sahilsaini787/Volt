@@ -4,12 +4,15 @@ import Link from "next/link";
 import styles from "@/Components/CategoriesBar/CategoriesBar.module.scss";
 import { CategoriesType, CategoryType } from "@/lib/types/categories";
 import { useState } from "react";
+import { useUserContext } from "@/context/UserPrefsContext";
 
 const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
   const [showDropdownMenu, setShowDorpdownMenu] = useState<boolean>(false);
-
+  const { themeMode } = useUserContext();
   return (
-    <div className={styles.categoreisBarContainer}>
+    <div
+      className={`${styles.categoriesBarContainer} ${themeMode === "light" ? styles.lightMode : styles.darkMode}`}
+    >
       <div
         className={styles.showCategoriesBarBtnContainer}
         onPointerOver={() => setShowDorpdownMenu(true)}

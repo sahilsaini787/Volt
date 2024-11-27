@@ -2,6 +2,7 @@
 
 import { createContext, useState, useContext } from "react";
 import Cookies from "js-cookie";
+import styles from "@/context/UserPrefsContext.module.scss";
 
 type LayoutStyleType = "grid" | "list";
 type ThemeModeType = "dark" | "light";
@@ -46,16 +47,19 @@ export default function UserPrefsContext({
       setLayoutStyle("grid");
       Cookies.set("layoutStyle", "grid", { expires: 1 });
     }
-    console.log(layoutStyle);
   }
 
   function handleThemeChange() {
     if (themeMode === "light") {
       setThemeMode("dark");
       Cookies.set("themeMode", "dark", { expires: 1 });
+      document.documentElement.classList.add("darkMode");
+      document.documentElement.classList.remove("lightMode");
     } else if (themeMode === "dark") {
       setThemeMode("light");
       Cookies.set("themeMode", "light", { expires: 1 });
+      document.documentElement.classList.add("lightMode");
+      document.documentElement.classList.remove("darkMode");
     }
   }
 
@@ -63,7 +67,11 @@ export default function UserPrefsContext({
     <UserContext.Provider
       value={{ layoutStyle, themeMode, handleLayoutChange, handleThemeChange }}
     >
-      {children}
+      <div
+        className={`${styles.rootDiv} ${themeMode === "light" ? styles.lightMode : styles.darkMode}`}
+      >
+        {children}
+      </div>
     </UserContext.Provider>
   );
 }

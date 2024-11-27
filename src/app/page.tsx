@@ -1,4 +1,4 @@
-import PopularTags from "@/Components/PopularTags/PopularTags";
+import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
 import styles from "./page.module.scss";
 import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
 import { fetchCategories } from "@/lib/api/categoryFetcher";
@@ -13,7 +13,7 @@ export default async function Home() {
       <CategoriesBar categories={categories} />
       <div className={styles.page}>
         <ArticlePreviewSectionWrapper category="" tag="" />
-        <PopularTags />
+        <PopularTagsWrapper />
       </div>
     </div>
   );
