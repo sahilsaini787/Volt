@@ -1,18 +1,19 @@
+import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
 import { notFound } from "next/navigation";
 import styles from "@/app/page.module.scss";
 import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
 import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
 import { CategoriesType } from "@/lib/types/categories";
 import { fetchCategories } from "@/lib/api/categoryFetcher";
-import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
+import { fetchTags } from "@/lib/api/tagsFetcher";
+import { TagType } from "@/lib/types/tags";
+import { ParamsType } from "@/lib/types/paramsType";
 
-type ParamsType = {
-  params: Promise<{ id: string }>;
-};
-
-const DisplayPostsByTag = async ({ params }: ParamsType) => {
+const DisplayPostsByTags = async ({ params }: ParamsType) => {
+  const tags = await fetchTags();
   const id = (await params).id;
-  if (!id) {
+
+  if (!tags.some((tag: TagType) => tag.slug === id)) {
     notFound();
   }
   const categories: CategoriesType = await fetchCategories();
@@ -28,4 +29,4 @@ const DisplayPostsByTag = async ({ params }: ParamsType) => {
   );
 };
 
-export default DisplayPostsByTag;
+export default DisplayPostsByTags;

@@ -1,0 +1,77 @@
+.main {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  .page404Container {
+    width: 100%;
+    padding: 5rem 1.5rem;
+
+    .msg404 {
+      display: block;
+      font-size: 2.25rem;
+      color: var(--msg-404-text);
+      margin-bottom: 2.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .msgNotFound {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+
+      font-family: var(--font-inter);
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    .msgVisitHomePage {
+      font-size: 1rem;
+      margin: 1.4rem 0;
+      line-height: 2rem;
+    }
+
+    .redirect404Buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      font-size: 0.9rem;
+      align-items: center;
+
+      .goBackHome {
+        padding: 0.8rem 1rem;
+        display: block;
+        color: var(--go-back-home-text-color);
+        background-color: var(--go-back-home-background);
+        font-weight: 600;
+        border-radius: 10px;
+      }
+      .contactUs {
+        display: block;
+        font-weight: 600;
+
+        span {
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .main {
+    .page404Container {
+      padding: 8rem 2rem;
+
+      .msgNotFound {
+        font-size: 3rem;
+        line-height: 3rem;
+      }
+      .msgVisitHomePage {
+        font-size: 1.125rem;
+        margin: 1.5rem 0;
+      }
+    }
+  }
+}

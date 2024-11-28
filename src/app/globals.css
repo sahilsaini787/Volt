@@ -8,6 +8,12 @@
 
   --hover-text-color: #000;
   --border-color: #9d9d9d;
+
+  /* 404 Page */
+  --msg-404-text: #768499;
+  --go-back-home-background: #f3f6f9;
+  --go-back-home-text-color: #020817;
+  --contact-us-text-color: #020817;
 }
 
 /* Define dark theme */
@@ -19,6 +25,12 @@
   --hover-tag-list-background-color: #182334;
   --hover-text-color: #fff;
   --border-color: #3a3a3a;
+
+  /* 404 Page */
+  --msg-404-text: #94a3b8;
+  --go-back-home-background: #182334;
+  --go-back-home-text-color: #f6f8fa;
+  --contact-us-text-color: #f6f8fa;
 }
 
 html,
