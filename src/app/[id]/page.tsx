@@ -30,8 +30,9 @@ const DisplayPosts = async ({ params }: ParamsType) => {
     case "learn":
       return (
         <div className={styles.contentWrapper}>
-          {/* <CategoriesBar categories={categories} /> */}
-          <div className={styles.page}>This is Learn Section</div>
+          <div className={styles.page}>
+            <ArticlePreviewSectionWrapper category="Learning" tag="" />
+          </div>
         </div>
       );
     default:

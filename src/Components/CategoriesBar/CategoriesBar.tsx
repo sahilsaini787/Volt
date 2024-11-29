@@ -45,7 +45,8 @@ const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
             <div>Loading...</div>
           ) : (
             categories.map((category: CategoryType) =>
-              category.name !== "Uncategorized" ? (
+              category.name !== "Uncategorized" &&
+              category.name !== "Learning" ? (
                 <li key={category.id} className={styles.categoriesListItem}>
                   <Link
                     href={`/category/${category.slug}`}

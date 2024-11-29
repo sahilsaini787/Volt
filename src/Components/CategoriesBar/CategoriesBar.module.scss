@@ -70,7 +70,7 @@
   }
 }
 
-@media (min-width: 928px) {
+@media (min-width: 728px) {
   .categoriesBarContainer {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 1rem;
@@ -115,7 +115,7 @@
   }
 }
 
-@media (max-width: 928px) {
+@media (max-width: 728px) {
   @keyframes hoverAnim {
     0% {
       transform: rotate(0deg);
