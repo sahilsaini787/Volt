@@ -3,7 +3,7 @@ import type { CategoryType } from "@/lib/types/categories";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const apiURL = process.env.GRAPHQL_API_URL || "";
-  const baseURL = "http://localhost:8000";
+  const baseURL = "https://volt-eosin.vercel.app";
   const latestDate = new Date("2024-11-30T00:00:00.000Z");
 
   //all the static URLs
