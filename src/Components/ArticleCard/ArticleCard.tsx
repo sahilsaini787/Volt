@@ -8,7 +8,13 @@ import {
   parseHTMLParagraphList,
 } from "@/utils/HTMLParser";
 
-const ArticleCard = ({ postData }: { postData: ArticleCardPropsType }) => {
+const ArticleCard = ({
+  postData,
+  layoutStyle,
+}: {
+  postData: ArticleCardPropsType;
+  layoutStyle: "grid" | "list";
+}) => {
   const {
     featuredImage: {
       node: { mediaItemUrl: thumbnailURL, altText: thumbnailAltText },
@@ -24,7 +30,10 @@ const ArticleCard = ({ postData }: { postData: ArticleCardPropsType }) => {
   const timeToRead = calculateTimeToReadArticle(articleContent);
   const articleExcerptText = parseHTMLParagraphList(articleExcerpt)[0];
   return (
-    <Link href={`/article/${slug}`} className={styles.articleCardContainer}>
+    <Link
+      href={`/article/${slug}`}
+      className={`${layoutStyle === "grid" ? styles.articleCardContainerGrid : styles.articleCardContainerList}`}
+    >
       <div className={styles.articleCardThumbnailContainer}>
         <Image
           src={thumbnailURL}
@@ -34,15 +43,19 @@ const ArticleCard = ({ postData }: { postData: ArticleCardPropsType }) => {
           className={styles.articleCardThumbnail}
         />
       </div>
-      <div className={styles.articleMeta}>
-        <div className={styles.articlePublishDate}>{publishDateFormat}</div>
-        <div className={styles.articleTimeToRead}>
-          {timeToRead} {timeToRead === 1 ? "min" : "mins"}
+      <div className={styles.articleTextContentPreview}>
+        <div className={styles.articleMeta}>
+          <div className={styles.articlePublishDate}>{publishDateFormat}</div>
+          <div className={styles.articleTimeToRead}>
+            {timeToRead} {timeToRead === 1 ? "min" : "mins"}
+          </div>
         </div>
-      </div>
-      <div className={styles.articleMainPreview}>
-        <div className={styles.articleTitlePreview}>{articleTitle}</div>
-        <div className={styles.articleContentPreview}>{articleExcerptText}</div>
+        <div className={styles.articleMainPreview}>
+          <div className={styles.articleTitlePreview}>{articleTitle}</div>
+          <div className={styles.articleContentPreview}>
+            {articleExcerptText}
+          </div>
+        </div>
       </div>
     </Link>
   );

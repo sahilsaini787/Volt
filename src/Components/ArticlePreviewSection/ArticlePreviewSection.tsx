@@ -1,6 +1,8 @@
+"use client";
+
 import ArticleCard from "@/Components/ArticleCard/ArticleCard";
 import styles from "@/Components/ArticlePreviewSection/ArticlePreviewSection.module.scss";
-import { fetchPosts } from "@/lib/api/postsFetcher";
+import { useUserContext } from "@/context/UserPrefsContext";
 
 export type ArticleCardPropsType = {
   featuredImage: {
@@ -38,20 +40,25 @@ export type ArticleCardPropsType = {
   };
 };
 
-const ArticlePreviewSection = async ({
-  category,
-  tag,
+const ArticlePreviewSection = ({
+  articlesData,
 }: {
-  category: string;
-  tag: string;
+  articlesData: ArticleCardPropsType[];
 }) => {
-  const articlesData = await fetchPosts(category, tag);
+  const { layoutStyle } = useUserContext();
+
   return (
-    <div className={styles.articleGridContainer}>
-      <ul className={styles.articleList}>
+    <div className={styles.articleContainer}>
+      <ul
+        className={`${layoutStyle === "grid" ? styles.articleGrid : styles.articleList}`}
+      >
         {articlesData ? (
           articlesData.map((articleData: ArticleCardPropsType) => (
-            <ArticleCard key={articleData.id} postData={articleData} />
+            <ArticleCard
+              key={articleData.id}
+              postData={articleData}
+              layoutStyle={layoutStyle}
+            />
           ))
         ) : (
           <span>Loading Articles...</span>

@@ -9,8 +9,6 @@ export default function ArticlePage({ article }: { article: articleType }) {
   const {
     content: articleContent,
     author,
-    id: articleID,
-    slug: articleSlug,
     date: articlePublishDate,
     title: articleTitle,
   } = article;
@@ -25,7 +23,6 @@ export default function ArticlePage({ article }: { article: articleType }) {
       firstName: authorFirstName,
       lastName: authorLastName,
       slug: authorSlug,
-      id: authorId,
       description: authorDescription,
       avatar: authorAvatar,
     } = {},

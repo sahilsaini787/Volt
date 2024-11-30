@@ -4,12 +4,15 @@ import Link from "next/link";
 import styles from "@/Components/CategoriesBar/CategoriesBar.module.scss";
 import { CategoriesType, CategoryType } from "@/lib/types/categories";
 import { useState } from "react";
+import { useUserContext } from "@/context/UserPrefsContext";
 
 const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
   const [showDropdownMenu, setShowDorpdownMenu] = useState<boolean>(false);
-
+  const { themeMode } = useUserContext();
   return (
-    <div className={styles.categoreisBarContainer}>
+    <div
+      className={`${styles.categoriesBarContainer} ${themeMode === "light" ? styles.lightMode : styles.darkMode}`}
+    >
       <div
         className={styles.showCategoriesBarBtnContainer}
         onPointerOver={() => setShowDorpdownMenu(true)}
@@ -42,7 +45,8 @@ const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
             <div>Loading...</div>
           ) : (
             categories.map((category: CategoryType) =>
-              category.name !== "Uncategorized" ? (
+              category.name !== "Uncategorized" &&
+              category.name !== "Learning" ? (
                 <li key={category.id} className={styles.categoriesListItem}>
                   <Link
                     href={`/category/${category.slug}`}

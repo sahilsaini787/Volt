@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/Components/Navbar/Navbar";
 import Footer from "@/Components/Footer/Footer";
 import BackToTopButton from "@/Components/BackToTop/BackToTop";
-import { Roboto, Source_Serif_4 } from "next/font/google";
+import { Roboto, Source_Serif_4, Inter } from "next/font/google";
+import type { Metadata } from "next";
+import UserPrefsContext from "@/context/UserPrefsContext";
+import { cookies } from "next/headers";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -16,6 +18,12 @@ const sourceSerif4 = Source_Serif_4({
   subsets: ["latin"],
   weight: ["200", "400", "700"],
   variable: "--font-source-serif-4",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["200", "400", "700"],
+  variable: "--font-inter",
 });
 
 const geistSans = localFont({
@@ -34,22 +42,37 @@ export const metadata: Metadata = {
   description: "A blogging website",
 };
 
+type LayoutStyleType = "grid" | "list";
+type ThemeModeType = "dark" | "light";
+
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+
+  const storedLayoutStyle: LayoutStyleType =
+    (cookieStore.get("layoutStyle")?.value as LayoutStyleType) || "grid";
+  const storedThemeMode: ThemeModeType =
+    (cookieStore.get("themeMode")?.value as ThemeModeType) || "light";
+
   return (
-    <html lang="en">
+    <html lang="en" className="lightMode">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${sourceSerif4.variable}`}
+        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${sourceSerif4.variable} ${inter.variable}`}
       >
-        <div className="mainAppContainer">
-          <Navbar />
-          {children}
-          <BackToTopButton />
-          <Footer />
-        </div>
+        <UserPrefsContext
+          storedLayoutStyle={storedLayoutStyle}
+          storedThemeMode={storedThemeMode}
+        >
+          <div className="mainAppContainer">
+            <Navbar />
+            {children}
+            <BackToTopButton />
+            <Footer />
+          </div>
+        </UserPrefsContext>
       </body>
     </html>
   );

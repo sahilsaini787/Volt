@@ -1,18 +1,19 @@
-import ArticlePreviewSection from "@/Components/ArticlePreviewSection/ArticlePreviewSection";
+import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
 import { notFound } from "next/navigation";
 import styles from "@/app/page.module.scss";
 import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
-import PopularTags from "@/Components/PopularTags/PopularTags";
+import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
 import { CategoriesType } from "@/lib/types/categories";
 import { fetchCategories } from "@/lib/api/categoryFetcher";
+import { fetchTags } from "@/lib/api/tagsFetcher";
+import { TagType } from "@/lib/types/tags";
+import { ParamsType } from "@/lib/types/paramsType";
 
-type ParamsType = {
-  params: Promise<{ id: string }>;
-};
-
-const DisplayPostsByTag = async ({ params }: ParamsType) => {
+const DisplayPostsByTags = async ({ params }: ParamsType) => {
+  const tags = await fetchTags();
   const id = (await params).id;
-  if (!id) {
+
+  if (!tags.some((tag: TagType) => tag.slug === id)) {
     notFound();
   }
   const categories: CategoriesType = await fetchCategories();
@@ -21,11 +22,11 @@ const DisplayPostsByTag = async ({ params }: ParamsType) => {
     <div className={styles.contentWrapper}>
       <CategoriesBar categories={categories} />
       <div className={styles.page}>
-        <ArticlePreviewSection tag={id} category="" />
-        <PopularTags />
+        <ArticlePreviewSectionWrapper category="" tag={id} />
+        <PopularTagsWrapper />
       </div>
     </div>
   );
 };
 
-export default DisplayPostsByTag;
+export default DisplayPostsByTags;
