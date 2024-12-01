@@ -24,29 +24,16 @@
       .authorTitle {
         font-size: 2rem;
         font-weight: 600;
+        color: var(--authorName);
       }
       .authorDescription {
-        color: #777;
-      }
-
-      .authorHomepageContainer {
-        border: 1px solid #777;
-        border-radius: 20px;
-        width: fit-content;
-        padding: 0.4rem 0.8rem;
-        margin-top: 1rem;
-
-        .authorHomepage {
-          font-weight: 600;
-          font-size: 0.9rem;
-          color: #999;
-          display: block;
-        }
+        color: var(--authorDescription);
       }
     }
 
     .articleSectionHeader {
       margin-top: 2rem;
+      color: var(--article-header);
     }
 
     .articleContainer {

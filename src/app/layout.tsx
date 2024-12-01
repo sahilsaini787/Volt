@@ -58,7 +58,10 @@ export default async function RootLayout({
     (cookieStore.get("themeMode")?.value as ThemeModeType) || "light";
 
   return (
-    <html lang="en" className="lightMode">
+    <html
+      lang="en"
+      className={`${storedThemeMode === "light" ? "lightMode" : "darkMode"}`}
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${sourceSerif4.variable} ${inter.variable}`}
       >

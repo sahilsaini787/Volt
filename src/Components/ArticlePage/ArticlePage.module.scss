@@ -8,6 +8,7 @@
   flex-direction: column;
   gap: 1.5rem;
   font-size: 1.2rem;
+  color: var(--article-text);
 
   .articleTitle {
     font-size: 2.5rem;
@@ -32,6 +33,9 @@
     .articleAndAuthorMeta {
       .articleAuthor {
         font-size: 0.9rem;
+        a {
+          color: var(--article-text);
+        }
       }
       .articleMeta {
         display: flex;
@@ -40,7 +44,7 @@
         .timeToRead,
         .articlePublishDate {
           font-size: 0.9rem;
-          color: #888;
+          color: var(--articleMeta);
         }
       }
     }
@@ -78,7 +82,7 @@
         text-align: center;
         padding-top: 1rem;
         font-size: 1rem;
-        color: #777;
+        color: var(--article-figcaption);
         font-weight: 600;
         font-family: "Times New Roman", Times, serif;
       }
@@ -100,7 +104,7 @@
   }
 
   .underlineSeperator {
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--article-underlineSeperator);
   }
 
   .articleCredits {
@@ -125,11 +129,11 @@
       font-weight: 600;
     }
     .authorDescriptionCredits {
-      color: #777;
+      color: var(--article-authorDescriptionCredits);
     }
 
     .authorHomepageContainerCredits {
-      border: 1px solid #777;
+      border: 1px solid var(--article-authorHomepage-border);
       border-radius: 20px;
       width: fit-content;
       padding: 0.4rem 0.8rem;
@@ -138,7 +142,7 @@
       .authorHomepageCredits {
         font-weight: 600;
         font-size: 0.9rem;
-        color: #999;
+        color: var(--article-authorHomepageCredits);
         display: block;
       }
     }

@@ -29,11 +29,11 @@
     padding: 1rem;
     padding-top: 1.4rem;
     padding-bottom: 1.4rem;
-    background-color: #f7f9fd;
+    background-color: var(--navMenuList-background-color);
     border-radius: 8px;
     position: absolute;
     z-index: 1000;
-    color: #666;
+    color: var(--navMenuList-text-color);
     width: fit-content;
 
     .navMenuItem {
@@ -42,7 +42,7 @@
       .navMenuItemLink {
         display: block;
         text-decoration: none;
-        color: #333;
+        color: var(--navMenuItemLink-text-color);
         padding: 0.6rem;
       }
     }
@@ -70,7 +70,6 @@
       border-radius: 8px;
       position: static;
       z-index: 1000;
-      color: #666;
       width: fit-content;
       margin-top: 0;
 
@@ -85,14 +84,14 @@
         .navMenuItemLink {
           &:hover,
           &:active {
-            background-color: #efefef;
+            background-color: var(--navMenuItemLink-hover-background-color);
             border-radius: 8px;
           }
         }
       }
 
       .activeMenuTab {
-        background-color: #efefef;
+        background-color: var(--navMenuItemLink-hover-background-color);
         border-radius: 8px;
       }
     }
