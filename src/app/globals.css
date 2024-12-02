@@ -38,7 +38,9 @@ body {
 
   --navMenuList-background-color: #f1f5f9;
   --navMenuList-text-color: #64748b;
-  --navMenuItemLink-text-color: #0f172a;
+  --navMenuItemLink-text-color: #64748b;
+  --navMenuItemLink-text-hover-color: #0f172a;
+
   --navMenuItemLink-hover-background-color: #f1f5f9;
 
   --userPrefBtns-border: #cbd5e4;
@@ -62,7 +64,7 @@ body {
   --categoriesListItemLink-hover-text: #0f172a;
 
   /* Article Card */
-  --articleCard-text: #64748b;
+  --articleCard-text: #7d838c;
   --articleCard-header: #020817;
   --articleCard-border: #cbd5e4;
 
@@ -109,8 +111,9 @@ body {
 
   --navMenuList-background-color: #1e293b;
   --navMenuList-text-color: #94a3ad;
-  --navMenuItemLink-text-color: #f8fafc;
+  --navMenuItemLink-text-color: #94a3ad;
   --navMenuItemLink-hover-background-color: #1e293b;
+  --navMenuItemLink-text-hover-color: #f8fafc;
 
   --userPrefBtns-border: #1e293b;
   --userPrefBtns-hover-background: #1e293b;

@@ -3,6 +3,7 @@
   height: fit-content;
   display: flex;
   flex-direction: column;
+  font-family: var(--font-inter);
 
   .articleCardThumbnailContainer {
     height: 10rem;
@@ -19,6 +20,7 @@
     font-size: 0.8rem;
     color: var(--articleCard-text);
     margin-top: 1.5rem;
+    line-height: 2rem;
   }
 
   .articleMainPreview {
@@ -34,6 +36,7 @@
     .articleContentPreview {
       display: none;
       color: var(--articleCard-text);
+      line-height: 1.4rem;
     }
   }
 }
@@ -49,6 +52,7 @@
 
       .articleTitlePreview {
         -webkit-line-clamp: 2;
+        font-size: 1.25rem;
       }
 
       .articleContentPreview,
@@ -71,8 +75,9 @@
   border-bottom: 1px solid var(--articleCard-border);
   padding-bottom: 1rem;
   align-items: center;
-  height: 6rem;
+  height: 5rem;
   gap: 1rem;
+  font-family: var(--font-inter);
 
   .articleCardThumbnailContainer {
     position: relative;
@@ -97,10 +102,8 @@
     }
 
     .articleMainPreview {
-      margin-top: 0.3rem;
-
       .articleTitlePreview {
-        font-size: 1.1rem;
+        font-size: 1.25rem;
         font-weight: 500;
         -webkit-line-clamp: 2;
         display: -webkit-box;
@@ -116,6 +119,7 @@
         display: none;
         color: var(--articleCard-text);
         line-height: 1.5rem;
+        font-weight: 400;
       }
     }
   }
@@ -140,7 +144,7 @@
     .articleTextContentPreview {
       .articleMainPreview {
         .articleContentPreview {
-          font-size: 0.9rem;
+          font-size: 0.875rem;
           padding-top: 0.5rem;
           -webkit-line-clamp: 3;
         }

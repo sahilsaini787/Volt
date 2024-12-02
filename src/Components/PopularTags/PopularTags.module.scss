@@ -3,7 +3,7 @@
   display: none;
   width: 35%;
   .popularTagsHeader {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: var(--popularTags-text);
     padding-bottom: 0.6rem;
     font-weight: 600;
@@ -18,7 +18,7 @@
       .tagsListItem {
         list-style: none;
         background-color: var(--tag-list-background-color);
-        padding: 0.4rem 0.8rem;
+        padding: 0.5rem 0.9rem;
         border-radius: 20px;
 
         display: flex;
@@ -27,7 +27,7 @@
 
         .tagsListItemLink {
           text-decoration: none;
-          font-size: 0.85rem;
+          font-size: 0.75rem;
           font-weight: 500;
           display: block;
           color: var(--tag-list-text-color);
@@ -35,7 +35,7 @@
 
         .tagsCount {
           text-decoration: none;
-          font-size: 0.85rem;
+          font-size: 0.75rem;
           font-weight: 500;
           text-align: center;
           color: var(--tag-list-text-color);

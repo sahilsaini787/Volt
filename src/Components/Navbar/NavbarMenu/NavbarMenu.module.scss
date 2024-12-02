@@ -58,7 +58,7 @@
     animation: scaleUp 0.4s ease forwards;
   }
 
-  @media (min-width: 928px) {
+  @media (min-width: 768px) {
     .navMenuList {
       display: flex;
       flex-direction: row;
@@ -86,6 +86,7 @@
           &:active {
             background-color: var(--navMenuItemLink-hover-background-color);
             border-radius: 8px;
+            color: var(--navMenuItemLink-text-hover-color);
           }
         }
       }
@@ -105,7 +106,7 @@
   }
 }
 
-@media (max-width: 928px) {
+@media (max-width: 768) {
   @keyframes hoverAnim {
     0% {
       transform: rotate(0deg);
