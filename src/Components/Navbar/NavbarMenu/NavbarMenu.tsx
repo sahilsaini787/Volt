@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import styles from "@/Components/Navbar/NavbarMenu/NavbarMenu.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const menuList = [
   { id: crypto.randomUUID(), title: "Blogs", href: "/" },
@@ -21,7 +21,11 @@ const menuList = [
 export default function NavbarMenu() {
   const [activeTab, setActiveTab] = useState<string>("");
   const [showDropdownMenu, setShowDorpdownMenu] = useState<boolean>(false);
-  const isTouchDevice = navigator.maxTouchPoints > 0;
+  const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsTouchDevice(navigator.maxTouchPoints > 0);
+  }, []);
 
   function handleActiveTab(menuItem: string) {
     setActiveTab(menuItem);

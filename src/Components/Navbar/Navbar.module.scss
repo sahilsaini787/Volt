@@ -51,6 +51,7 @@
 
             span {
               display: block;
+              color: var(--nav-text);
             }
           }
         }
@@ -102,6 +103,7 @@
           .temperatureInfo {
             display: flex;
             align-items: center;
+            color: var(--nav-text);
 
             .temperatureIconContainer {
               display: block;

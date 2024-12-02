@@ -9,7 +9,11 @@ import { useUserContext } from "@/context/UserPrefsContext";
 const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
   const [showDropdownMenu, setShowDorpdownMenu] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>("");
-  const isTouchDevice = navigator.maxTouchPoints > 0;
+  const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsTouchDevice(navigator.maxTouchPoints > 0);
+  }, []);
 
   const { themeMode } = useUserContext();
   return (
