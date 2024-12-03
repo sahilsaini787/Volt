@@ -77,7 +77,7 @@ const Navbar = () => {
           console.error("Error fetching weather data:", error);
         });
     } else {
-      setTemp(JSON.parse(userTempInfo).main.temp);
+      setTemp(JSON.parse(userTempInfo));
     }
   }, []);
 
