@@ -2,13 +2,13 @@ import styles from "@/app/page.module.scss";
 import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
 import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
 import { CategoriesType } from "@/lib/types/categories";
-import { fetchCategories } from "@/lib/api/categoryFetcher";
+import { GetCategories } from "@/lib/api/getCategory";
 import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
 import { notFound } from "next/navigation";
 import { ParamsType } from "@/lib/types/paramsType";
 
 const DisplayPosts = async ({ params }: ParamsType) => {
-  const categories: CategoriesType = await fetchCategories();
+  const categories: CategoriesType = await GetCategories();
   const id = (await params).id;
   switch (id) {
     case "":

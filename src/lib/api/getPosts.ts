@@ -1,4 +1,4 @@
-export async function fetchPosts(
+export async function GetPosts(
   category: string | null = "",
   tag: string | null = "",
   author: string | null = ""

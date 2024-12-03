@@ -4,19 +4,19 @@ import styles from "@/app/page.module.scss";
 import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
 import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
 import { CategoriesType } from "@/lib/types/categories";
-import { fetchCategories } from "@/lib/api/categoryFetcher";
-import { fetchTags } from "@/lib/api/tagsFetcher";
+import { GetCategories } from "@/lib/api/getCategory";
+import { GetTags } from "@/lib/api/getTags";
 import { TagType } from "@/lib/types/tags";
 import { ParamsType } from "@/lib/types/paramsType";
 
 const DisplayPostsByTags = async ({ params }: ParamsType) => {
-  const tags = await fetchTags();
+  const tags = await GetTags();
   const id = (await params).id;
 
   if (!tags.some((tag: TagType) => tag.slug === id)) {
     notFound();
   }
-  const categories: CategoriesType = await fetchCategories();
+  const categories: CategoriesType = await GetCategories();
 
   return (
     <div className={styles.contentWrapper}>

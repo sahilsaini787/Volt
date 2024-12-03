@@ -1,12 +1,12 @@
 import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
 import styles from "./page.module.scss";
 import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
-import { fetchCategories } from "@/lib/api/categoryFetcher";
+import { GetCategories } from "@/lib/api/getCategory";
 import { CategoriesType } from "@/lib/types/categories";
 import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
 
 export default async function Home() {
-  const categories: CategoriesType = await fetchCategories();
+  const categories: CategoriesType = await GetCategories();
 
   return (
     <div className={styles.contentWrapper}>

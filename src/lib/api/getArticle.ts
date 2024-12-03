@@ -1,4 +1,4 @@
-export async function fetchArticle(slug: string) {
+export async function GetArticle(slug: string) {
   const articleQuery: string = `
 query getArticle($slug: ID!) {
   post(id:$slug, idType: SLUG) {

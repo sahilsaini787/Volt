@@ -1,4 +1,4 @@
-import { fetchPosts } from "@/lib/api/postsFetcher";
+import { GetPosts } from "@/lib/api/getPosts";
 import ArticlePreviewSection from "./ArticlePreviewSection";
 
 export default async function ArticlePreviewSectionWrapper({
@@ -8,6 +8,6 @@ export default async function ArticlePreviewSectionWrapper({
   category: string;
   tag: string;
 }) {
-  const articlesData = await fetchPosts(category, tag);
-  return <ArticlePreviewSection posts={articlesData} />;
+  const postsData = await GetPosts(category, tag);
+  return <ArticlePreviewSection posts={postsData} />;
 }

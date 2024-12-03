@@ -10,7 +10,7 @@ import Image from "next/image";
 import Cookies from "js-cookie";
 
 const Navbar = () => {
-  const [weatherData, setWeatherData] = useState<any>();
+  const [temp, setTemp] = useState<number>();
   const { themeMode } = useUserContext();
 
   //This is very ugly code. But it works for now.
@@ -47,14 +47,14 @@ const Navbar = () => {
     //check if cookies have the weather data if no then set it
     //else just use the stored cookie to define the state
 
-    const userWeatherInfo = Cookies.get("userWeatherInfo");
-    if (!userWeatherInfo) {
+    const userTempInfo = Cookies.get("userTempInfo");
+    if (!userTempInfo) {
       const locationData = Cookies.get("userLocation");
       if (!locationData) {
         console.error("User location data is not available.");
         return;
       }
-      const [latitude, longitude] = locationData?.split(",");
+      const [latitude, longitude] = locationData.split(",");
 
       async function getWeatherData() {
         const OPEN_WEATHER_API_KEY = process.env.NEXT_PUBLIC_OPEN_WEATHER_API;
@@ -68,14 +68,16 @@ const Navbar = () => {
 
       getWeatherData()
         .then((data) => {
-          setWeatherData(data);
-          Cookies.set("userWeatherInfo", JSON.stringify(data), { expires: 1 });
+          setTemp(data.main.temp);
+          Cookies.set("userTempInfo", JSON.stringify(data.main.temp), {
+            expires: 1,
+          });
         })
         .catch((error) => {
           console.error("Error fetching weather data:", error);
         });
     } else {
-      setWeatherData(JSON.parse(userWeatherInfo));
+      setTemp(JSON.parse(userTempInfo).main.temp);
     }
   }, []);
 
@@ -148,11 +150,7 @@ const Navbar = () => {
                 />
               </div>
               <span>
-                {weatherData ? (
-                  Math.round(Number(weatherData.main.temp))
-                ) : (
-                  <span>——</span>
-                )}
+                {temp ? Math.round(Number(temp)) : <span>——</span>}
                 °C
               </span>
             </div>

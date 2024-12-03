@@ -1,4 +1,4 @@
-export async function fetchTags() {
+export async function GetTags() {
   const apiURL = process.env.GRAPHQL_API_URL;
   if (!apiURL) {
     throw new Error("GRAPHQL_API_URL is not defined.");

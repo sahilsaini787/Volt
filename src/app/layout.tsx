@@ -51,17 +51,6 @@ export const metadata: Metadata = {
 type LayoutStyleType = "grid" | "list";
 type ThemeModeType = "dark" | "light";
 
-type locationDataType = {
-  country_code: string;
-  country_name: string;
-  city: string;
-  postal: string;
-  latitude: number;
-  longitude: number;
-  IP: string;
-  state: string;
-};
-
 export default async function RootLayout({
   children,
 }: Readonly<{

@@ -1,4 +1,4 @@
-export type articleType = {
+export type articlePageType = {
   id: string;
   slug: string;
   content: string | null;

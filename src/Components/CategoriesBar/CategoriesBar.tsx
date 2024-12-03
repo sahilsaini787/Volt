@@ -8,7 +8,6 @@ import { useUserContext } from "@/context/UserPrefsContext";
 
 const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
   const [showDropdownMenu, setShowDorpdownMenu] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<string>("");
   const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
 
   useEffect(() => {

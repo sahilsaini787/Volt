@@ -1,16 +1,16 @@
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
-import { fetchArticle } from "@/lib/api/articleFetcher";
+import { GetArticle } from "@/lib/api/getArticle";
 import { ParamsType } from "@/lib/types/paramsType";
-import { articleType } from "@/lib/types/articleType";
+import { articlePageType } from "@/lib/types/articlePageType";
 
 export const runtime = "edge";
 
 export async function GET(req: NextRequest, { params }: ParamsType) {
   const id = (await params).id;
-  const article: articleType = await fetchArticle(id);
+  const articlePage: articlePageType = await GetArticle(id);
 
-  if (!article) {
+  if (!articlePage) {
     return new Response("Article not found", { status: 404 });
   }
 
@@ -31,8 +31,8 @@ export async function GET(req: NextRequest, { params }: ParamsType) {
         }}
       >
         <img
-          src={article.featuredImage.node.mediaItemUrl || ""}
-          alt={article.featuredImage.node.altText || ""}
+          src={articlePage.featuredImage.node.mediaItemUrl || ""}
+          alt={articlePage.featuredImage.node.altText || ""}
           style={{
             width: "40%",
             height: "18rem",
@@ -42,7 +42,7 @@ export async function GET(req: NextRequest, { params }: ParamsType) {
         <h1
           style={{ marginTop: "20px", fontSize: "36px", textAlign: "center" }}
         >
-          {article.title || "Untitled Article"}
+          {articlePage.title || "Untitled Article"}
         </h1>
       </div>
     ),
