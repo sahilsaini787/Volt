@@ -32,9 +32,7 @@ const PopularTags = ({ tags }: { tags: TagsType }) => {
             </ul>
           </div>
         </>
-      ) : (
-        <span>Loading...</span>
-      )}
+      ) : null}
     </div>
   );
 };

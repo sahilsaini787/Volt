@@ -21,7 +21,7 @@ export async function generateMetadata({
   }
 
   const ogImageUrl = `/api/opengraph/article/${id}`;
-  const siteUrl = "https://volt-eosin.vercel.app";
+  const siteUrl = process.env.SITE_URL || "";
 
   return {
     metadataBase: new URL(siteUrl), // Set metadataBase
