@@ -1,14 +1,83 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import styles from "@/Components/Navbar/Navbar.module.scss";
 import Link from "next/link";
 import NavbarMenu from "@/Components/Navbar/NavbarMenu/NavbarMenu";
 import UserPrefs from "@/Components/Navbar/UserPrefs/UserPrefs";
 import { useUserContext } from "@/context/UserPrefsContext";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 const Navbar = () => {
+  const [weatherData, setWeatherData] = useState<any>();
   const { themeMode } = useUserContext();
+
+  //This is very ugly code. But it works for now.
+  //I'll look for a better way to implement this in the meantime
+
+  //get user location
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      if (!Cookies.get("userLocation")) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            Cookies.set("userLocation", `${latitude},${longitude}`, {
+              expires: 1,
+            });
+          },
+          function (error) {
+            console.error("Error getting location: ", error.message);
+          },
+          {
+            timeout: 5000,
+          }
+        );
+      }
+    } else {
+      console.log("Geolocation is not available in this browser.");
+    }
+  }, []);
+
+  //get user weather info
+  useEffect(() => {
+    //check if cookies have the weather data if no then set it
+    //else just use the stored cookie to define the state
+
+    const userWeatherInfo = Cookies.get("userWeatherInfo");
+    if (!userWeatherInfo) {
+      const locationData = Cookies.get("userLocation");
+      if (!locationData) {
+        console.error("User location data is not available.");
+        return;
+      }
+      const [latitude, longitude] = locationData?.split(",");
+
+      async function getWeatherData() {
+        const OPEN_WEATHER_API_KEY = process.env.NEXT_PUBLIC_OPEN_WEATHER_API;
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${OPEN_WEATHER_API_KEY}&units=metric`,
+          { method: "GET" }
+        );
+        const data = await response.json();
+        return data;
+      }
+
+      getWeatherData()
+        .then((data) => {
+          setWeatherData(data);
+          Cookies.set("userWeatherInfo", JSON.stringify(data), { expires: 1 });
+        })
+        .catch((error) => {
+          console.error("Error fetching weather data:", error);
+        });
+    } else {
+      setWeatherData(JSON.parse(userWeatherInfo));
+    }
+  }, []);
 
   return (
     <div
@@ -78,7 +147,14 @@ const Navbar = () => {
                   fill={true}
                 />
               </div>
-              <span>22°C</span>
+              <span>
+                {weatherData ? (
+                  Math.round(Number(weatherData.main.temp))
+                ) : (
+                  <span>——</span>
+                )}
+                °C
+              </span>
             </div>
           </div>
           <NavbarMenu />
