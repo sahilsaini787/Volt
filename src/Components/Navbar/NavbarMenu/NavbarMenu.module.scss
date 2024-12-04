@@ -4,6 +4,7 @@
     border: none;
     font-size: 1rem;
     padding: 1rem;
+    color: var(--activeNavMenuItem-text);
 
     .dropdownBtnSVG {
       width: 0.9rem;
@@ -29,11 +30,11 @@
     padding: 1rem;
     padding-top: 1.4rem;
     padding-bottom: 1.4rem;
-    background-color: var(--navMenuList-background-color);
+    background-color: var(--navMenuList-background);
     border-radius: 8px;
     position: absolute;
     z-index: 1000;
-    color: var(--navMenuList-text-color);
+    color: var(--navMenuList-text);
     width: fit-content;
 
     .navMenuItem {
@@ -42,7 +43,7 @@
       .navMenuItemLink {
         display: block;
         text-decoration: none;
-        color: var(--navMenuItemLink-text-color);
+        color: var(--navMenuItemLink-text);
         padding: 0.6rem;
       }
     }
@@ -84,15 +85,15 @@
         .navMenuItemLink {
           &:hover,
           &:active {
-            background-color: var(--navMenuItemLink-hover-background-color);
+            background-color: var(--navMenuItemLink-text-hover-background);
             border-radius: 8px;
-            color: var(--navMenuItemLink-text-hover-color);
+            color: var(--navMenuItemLink-text-hover);
           }
         }
       }
 
       .activeMenuTab {
-        background-color: var(--navMenuItemLink-hover-background-color);
+        background-color: var(--navMenuItemLink-text-hover-background);
         border-radius: 8px;
       }
     }

@@ -4,9 +4,16 @@ import styles from "@/Components/PopularTags/PopularTags.module.scss";
 import Link from "next/link";
 import { TagsType } from "@/lib/types/tags";
 import { useUserContext } from "@/context/UserPrefsContext";
+import { useState } from "react";
 
 const PopularTags = ({ tags }: { tags: TagsType }) => {
   const { themeMode } = useUserContext();
+  const [activeTag, setActiveTag] = useState<string>("");
+
+  function handleActiveTag(slug: string) {
+    setActiveTag(slug);
+  }
+
   return (
     <div
       className={`${styles.popularTagsContainer} ${themeMode === "light" ? styles.lightMode : styles.darkMode}`}
@@ -19,14 +26,14 @@ const PopularTags = ({ tags }: { tags: TagsType }) => {
           <div className={styles.tagsListContainer}>
             <ul className={styles.tagsList}>
               {tags.map((tag) => (
-                <li key={tag.id} className={styles.tagsListItem}>
+                <li key={tag.id} className={`${styles.tagsListItem}`}>
                   <Link
                     href={`/tag/${tag.slug}`}
-                    className={styles.tagsListItemLink}
+                    className={`${styles.tagsListItemLink} ${activeTag === tag.slug ? styles.setActiveTag : ""}`}
+                    onClick={() => handleActiveTag(tag.slug)}
                   >
-                    {tag.name}
+                    {tag.name} · {tag.count}
                   </Link>
-                  <div className={styles.tagsCount}>· {tag.count}</div>
                 </li>
               ))}
             </ul>

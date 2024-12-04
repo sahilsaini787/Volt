@@ -1,11 +1,6 @@
 import { notFound } from "next/navigation";
-import styles from "@/app/page.module.scss";
-import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
-import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
 import { GetArticle } from "@/lib/api/getArticle";
 import ArticlePage from "@/Components/ArticlePage/ArticlePage";
-import { CategoriesType } from "@/lib/types/categories";
-import { GetCategories } from "@/lib/api/getCategory";
 import { articlePageType } from "@/lib/types/articlePageType";
 import { ParamsType } from "@/lib/types/paramsType";
 import { Metadata } from "next";
@@ -48,18 +43,7 @@ const displayArticle = async ({ params }: ParamsType) => {
   if (!articlePage) {
     notFound();
   }
-
-  const categories: CategoriesType = await GetCategories();
-
-  return (
-    <div className={styles.contentWrapper}>
-      <CategoriesBar categories={categories} />
-      <div className={styles.page}>
-        <ArticlePage articlePage={articlePage} />
-        <PopularTagsWrapper />
-      </div>
-    </div>
-  );
+  return <ArticlePage articlePage={articlePage} />;
 };
 
 export default displayArticle;

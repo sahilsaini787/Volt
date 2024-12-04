@@ -1,7 +1,4 @@
 import { notFound } from "next/navigation";
-import styles from "@/app/page.module.scss";
-import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
-import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
 import { CategoriesType, CategoryType } from "@/lib/types/categories";
 import { GetCategories } from "@/lib/api/getCategory";
 import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
@@ -13,15 +10,7 @@ const DisplayPostsByCategory = async ({ params }: ParamsType) => {
   if (!categories.some((category: CategoryType) => category.slug === id)) {
     notFound();
   }
-  return (
-    <div className={styles.contentWrapper}>
-      <CategoriesBar categories={categories} />
-      <div className={styles.page}>
-        <ArticlePreviewSectionWrapper category={id} tag="" />
-        <PopularTagsWrapper />
-      </div>
-    </div>
-  );
+  return <ArticlePreviewSectionWrapper category={id} tag="" />;
 };
 
 export default DisplayPostsByCategory;

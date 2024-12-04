@@ -8,7 +8,8 @@
     font-family: var(--font-geist-sans);
     padding-top: 1.8rem;
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

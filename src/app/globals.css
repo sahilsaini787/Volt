@@ -28,40 +28,45 @@ body {
   /* 404 Page */
   --msg-404-text: #768499;
   --go-back-home-background: #f3f6f9;
-  --go-back-home-text-color: #020817;
-  --contact-us-text-color: #020817;
+  --go-back-home-text: #020817;
+  --contact-us-text: #020817;
 
   /* Navbar */
   --nav-background: #fbfbfb;
   --nav-text: #020817;
   --nav-border: #cbd5e4;
 
-  --navMenuList-background-color: #f1f5f9;
-  --navMenuList-text-color: #64748b;
-  --navMenuItemLink-text-color: #64748b;
-  --navMenuItemLink-text-hover-color: #0f172a;
+  --navMenuList-background: #f1f5f9;
+  --navMenuList-text: #64748b;
+  --navMenuItemLink-text: #64748b;
+  --navMenuItemLink-text-hover: #0f172a;
+  --activeNavMenuItem-text: #0f172a;
 
-  --navMenuItemLink-hover-background-color: #f1f5f9;
+  --navMenuItemLink-text-hover-background: #f1f5f9;
 
   --userPrefBtns-border: #cbd5e4;
   --userPrefBtns-hover-background: #f1f5f9;
   --userPrefBtns: #0f172a;
 
   /* POPULAR TAGS */
-
   --popularTags-background: #fbfbfb;
   --popularTags-text: #64748b;
-  --tag-list-background-color: #f3f6f9;
+  --tag-list-background: #f3f6f9;
   --tag-list-text-color: #49566d;
-  --tag-list-hover-text-color: #020817;
-  --hover-tag-list-background-color: #f3f6f9;
+  --tag-list-hover-text: #020817;
+  --hover-tag-list-background: #f3f6f9;
+  --active-tag-list-background: #0f172a;
+  --active-tag-list-hover-background: #3e4454;
+  --active-tag-list-text: #fbfbfb;
 
   /* Categories Bar */
   --categoriesBarList-background: #fbfbfb;
   --categoriesBarList-text: #64748b;
-  --categoriesBarContainer-border-color: #cbd5e4;
+  --categoriesBarContainer-border: #cbd5e4;
   --categoriesListItem-hover-background: #f1f5f9;
   --categoriesListItemLink-hover-text: #0f172a;
+  --active-categoriesListItem-background: #f1f5f9;
+  --active-categoriesListItemLink-text: #0f172a;
 
   /* Article Card */
   --articleCard-text: #7d838c;
@@ -101,19 +106,20 @@ body {
   /* 404 Page */
   --msg-404-text: #94a3b8;
   --go-back-home-background: #182334;
-  --go-back-home-text-color: #f6f8fa;
-  --contact-us-text-color: #f6f8fa;
+  --go-back-home-text: #f6f8fa;
+  --contact-us-text: #f6f8fa;
 
   /* Navbar */
   --nav-background: #020817;
   --nav-text: #f8fafc;
   --nav-border: #1e293b;
 
-  --navMenuList-background-color: #1e293b;
-  --navMenuList-text-color: #94a3ad;
-  --navMenuItemLink-text-color: #94a3ad;
-  --navMenuItemLink-hover-background-color: #1e293b;
-  --navMenuItemLink-text-hover-color: #f8fafc;
+  --navMenuList-background: #1e293b;
+  --navMenuList-text: #94a3ad;
+  --navMenuItemLink-text: #94a3ad;
+  --navMenuItemLink-text-hover-background: #1e293b;
+  --navMenuItemLink-text-hover: #f8fafc;
+  --activeNavMenuItem-text: #f8fafc;
 
   --userPrefBtns-border: #1e293b;
   --userPrefBtns-hover-background: #1e293b;
@@ -122,17 +128,23 @@ body {
   /* Popular tags */
   --popularTags-background: #020817;
   --popularTags-text: #94a3b8;
-  --tag-list-background-color: #1e293b;
+  --tag-list-background: #1e293b;
   --tag-list-text-color: #c5c9d0;
-  --tag-list-hover-text-color: #f8fafc;
-  --hover-tag-list-background-color: #182334;
+  --tag-list-hover-text: #f8fafc;
+  --hover-tag-list-background: #0f172a;
+  --active-tag-list-background: #fbfbfb;
+  --active-tag-list-hover-background: #c6cacf;
+  --active-tag-list-text: #0f172a;
 
   /* categories bar */
-  --categoriesBarList-background: #020817;
+  --categoriesBarList-background: #1e293b;
   --categoriesBarList-text: #94a3b8;
-  --categoriesBarContainer-border-color: #1e293b;
+  --categoriesBarContainer-border: #1e293b;
   --categoriesListItem-hover-background: #1e293b;
   --categoriesListItemLink-hover-text: #f8fafc;
+  --categories-btn-text: #fbfbfb;
+  --active-categoriesListItem-background: #1e293b;
+  --active-categoriesListItemLink-text: #f8fafc;
 
   /* ArticleCard */
   --articleCard-text: #94a3b8;

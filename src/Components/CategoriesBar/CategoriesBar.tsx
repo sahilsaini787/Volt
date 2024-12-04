@@ -9,7 +9,11 @@ import { useUserContext } from "@/context/UserPrefsContext";
 const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
   const [showDropdownMenu, setShowDorpdownMenu] = useState<boolean>(false);
   const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
+  const [activeCategory, setActiveCategory] = useState<string>("");
 
+  function handleActiveCategory(slug: string) {
+    setActiveCategory(slug);
+  }
   useEffect(() => {
     setIsTouchDevice(navigator.maxTouchPoints > 0);
   }, []);
@@ -61,7 +65,8 @@ const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
                   <li key={category.id} className={styles.categoriesListItem}>
                     <Link
                       href={`/category/${category.slug}`}
-                      className={styles.categoriesListItemLink}
+                      className={`${styles.categoriesListItemLink} ${activeCategory === category.slug ? styles.setActiveCategory : ""}`}
+                      onClick={() => handleActiveCategory(category.slug)}
                     >
                       {category.name}
                     </Link>
