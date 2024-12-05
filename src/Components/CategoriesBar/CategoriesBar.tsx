@@ -5,18 +5,25 @@ import styles from "@/Components/CategoriesBar/CategoriesBar.module.scss";
 import { CategoriesType, CategoryType } from "@/lib/types/categories";
 import { useEffect, useState } from "react";
 import { useUserContext } from "@/context/UserPrefsContext";
+import { usePathname } from "next/navigation";
 
 const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
+  const currentPathName = usePathname();
   const [showDropdownMenu, setShowDorpdownMenu] = useState<boolean>(false);
   const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
-  const [activeCategory, setActiveCategory] = useState<string>("");
+  const [activeCategory, setActiveCategory] = useState<string>(currentPathName);
+
+  useEffect(() => {
+    setIsTouchDevice(navigator.maxTouchPoints > 0);
+  }, []);
+
+  useEffect(() => {
+    handleActiveCategory(currentPathName);
+  }, [currentPathName]);
 
   function handleActiveCategory(slug: string) {
     setActiveCategory(slug);
   }
-  useEffect(() => {
-    setIsTouchDevice(navigator.maxTouchPoints > 0);
-  }, []);
 
   const { themeMode } = useUserContext();
   return (
@@ -65,8 +72,7 @@ const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
                   <li key={category.id} className={styles.categoriesListItem}>
                     <Link
                       href={`/category/${category.slug}`}
-                      className={`${styles.categoriesListItemLink} ${activeCategory === category.slug ? styles.setActiveCategory : ""}`}
-                      onClick={() => handleActiveCategory(category.slug)}
+                      className={`${styles.categoriesListItemLink} ${activeCategory === `/category/${category.slug}` ? styles.setActiveCategory : ""}`}
                     >
                       {category.name}
                     </Link>

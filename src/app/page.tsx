@@ -12,7 +12,11 @@ export default async function Home() {
     <div className={styles.contentWrapper}>
       <CategoriesBar categories={categories} />
       <div className={styles.page}>
-        <ArticlePreviewSectionWrapper category="" tag="" />
+        <ArticlePreviewSectionWrapper
+          category=""
+          tag=""
+          categoryToExclude={[""]}
+        />
         <PopularTagsWrapper />
       </div>
     </div>

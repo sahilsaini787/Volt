@@ -11,7 +11,13 @@ const DisplayPostsByTags = async ({ params }: ParamsType) => {
   if (!tags.some((tag: TagType) => tag.slug === id)) {
     notFound();
   }
-  return <ArticlePreviewSectionWrapper category="" tag={id} />;
+  return (
+    <ArticlePreviewSectionWrapper
+      category=""
+      tag={id}
+      categoryToExclude={[""]}
+    />
+  );
 };
 
 export default DisplayPostsByTags;

@@ -1,5 +1,5 @@
 .articleContainer {
-  grid-column: 1 / span 3;
+  grid-column: 1 / span 4;
   width: 100%;
   height: fit-content;
   padding: 0 1rem;
@@ -261,5 +261,11 @@
         }
       }
     }
+  }
+}
+
+@media (min-width: 1024px) {
+  .articleContainer {
+    grid-column: 1 / span 3;
   }
 }

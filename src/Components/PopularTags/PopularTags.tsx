@@ -4,11 +4,17 @@ import styles from "@/Components/PopularTags/PopularTags.module.scss";
 import Link from "next/link";
 import { TagsType } from "@/lib/types/tags";
 import { useUserContext } from "@/context/UserPrefsContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const PopularTags = ({ tags }: { tags: TagsType }) => {
+  const currentPathname = usePathname();
   const { themeMode } = useUserContext();
-  const [activeTag, setActiveTag] = useState<string>("");
+  const [activeTag, setActiveTag] = useState<string>(currentPathname);
+
+  useEffect(() => {
+    handleActiveTag(currentPathname);
+  }, [currentPathname]);
 
   function handleActiveTag(slug: string) {
     setActiveTag(slug);
@@ -29,8 +35,7 @@ const PopularTags = ({ tags }: { tags: TagsType }) => {
                 <li key={tag.id} className={`${styles.tagsListItem}`}>
                   <Link
                     href={`/tag/${tag.slug}`}
-                    className={`${styles.tagsListItemLink} ${activeTag === tag.slug ? styles.setActiveTag : ""}`}
-                    onClick={() => handleActiveTag(tag.slug)}
+                    className={`${styles.tagsListItemLink} ${activeTag === `/tag/${tag.slug}` ? styles.setActiveTag : ""}`}
                   >
                     {tag.name} · {tag.count}
                   </Link>

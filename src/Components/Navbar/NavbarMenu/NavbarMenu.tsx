@@ -3,6 +3,7 @@
 import Link from "next/link";
 import styles from "@/Components/Navbar/NavbarMenu/NavbarMenu.module.scss";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const menuList = [
   { id: crypto.randomUUID(), title: "Blogs", href: "/" },
@@ -19,13 +20,18 @@ const menuList = [
 ];
 
 export default function NavbarMenu() {
-  const [activeTab, setActiveTab] = useState<string>("");
+  const currentPathname = usePathname();
+  const [activeTab, setActiveTab] = useState<string>(currentPathname);
   const [showDropdownMenu, setShowDorpdownMenu] = useState<boolean>(false);
   const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
 
   useEffect(() => {
     setIsTouchDevice(navigator.maxTouchPoints > 0);
   }, []);
+
+  useEffect(() => {
+    handleActiveTab(currentPathname);
+  }, [currentPathname]);
 
   function handleActiveTab(menuItem: string) {
     setActiveTab(menuItem);
@@ -76,7 +82,6 @@ export default function NavbarMenu() {
               href={menuItem.href}
               className={`${styles.navMenuItemLink} ${activeTab === menuItem.href ? styles.activeMenuTab : ""}
               ${activeTab === "" ? (menuItem.href === "/" ? styles.activeMenuTab : "") : ""}`}
-              onClick={() => handleActiveTab(menuItem.href)}
             >
               {menuItem.title}
             </Link>

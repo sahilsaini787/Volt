@@ -1,5 +1,6 @@
 .authorPageContainer {
   width: 100%;
+  grid-column: 1 / span 4;
 
   flex-grow: 1;
   .authorPage {
@@ -59,5 +60,11 @@
         column-gap: 2rem;
       }
     }
+  }
+}
+
+@media (min-width: 1024px) {
+  .authorPageContainer {
+    grid-column: 1 / span 3;
   }
 }
