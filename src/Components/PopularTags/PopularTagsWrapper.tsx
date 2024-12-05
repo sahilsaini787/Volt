@@ -5,5 +5,9 @@ import { TagsType } from "@/lib/types/tags";
 export default async function PopularTagsWrapper() {
   const tags: TagsType = await GetTags();
 
-  return <PopularTags tags={tags} />;
+  return (
+    <div>
+      <PopularTags tags={tags} />
+    </div>
+  );
 }

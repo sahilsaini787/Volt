@@ -2,6 +2,9 @@
   padding-left: 2rem;
   display: none;
   width: 100%;
+  position: sticky;
+  top: 6rem;
+
   .popularTagsHeader {
     font-size: 0.8rem;
     color: var(--popularTags-text);
