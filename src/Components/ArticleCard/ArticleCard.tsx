@@ -41,6 +41,7 @@ const ArticleCard = ({
           style={{ objectFit: "cover" }}
           alt={thumbnailAltText}
           className={styles.articleCardThumbnail}
+          sizes="(max-width: 540px) 90vw, (max-width: 728px) 30vw, 20vw"
         />
       </div>
       <div className={styles.articleTextContentPreview}>

@@ -147,6 +147,7 @@ const Navbar = () => {
                   alt="temperature icon"
                   className={styles.temperatureIcon}
                   fill={true}
+                  sizes="(max-width: 1200px) 50vw"
                 />
               </div>
               <span>
