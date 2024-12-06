@@ -20,7 +20,6 @@
     font-size: 0.8rem;
     color: var(--articleCard-text);
     margin-top: 1.5rem;
-    line-height: 2rem;
   }
 
   .articleMainPreview {
@@ -36,7 +35,7 @@
     .articleContentPreview {
       display: none;
       color: var(--articleCard-text);
-      line-height: 1.4rem;
+      line-height: 1.25rem;
     }
   }
 }

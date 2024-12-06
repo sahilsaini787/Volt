@@ -17,9 +17,9 @@ const DisplayPosts = async ({ params }: ParamsType) => {
           <CategoriesBar categories={categories} />
           <div className={styles.page}>
             <ArticlePreviewSectionWrapper
+              categoryToExclude={"143"}
               category=""
               tag=""
-              categoryToExclude={["Learning"]}
             />
             <PopularTagsWrapper />
           </div>
@@ -35,11 +35,7 @@ const DisplayPosts = async ({ params }: ParamsType) => {
       return (
         <div className={styles.contentWrapper}>
           <div className={styles.page}>
-            <ArticlePreviewSectionWrapper
-              category="Learning"
-              tag=""
-              categoryToExclude={[""]}
-            />
+            <ArticlePreviewSectionWrapper category="Learning" tag="" />
           </div>
         </div>
       );

@@ -30,6 +30,9 @@ body {
   --go-back-home-background: #f3f6f9;
   --go-back-home-text: #020817;
   --contact-us-text: #020817;
+  --msgNotFound-text: #020817;
+  --msgVisitHomePage-text: #020817;
+  --contactUs-text: #020817;
 
   /* Navbar */
   --nav-background: #fbfbfb;
@@ -69,7 +72,7 @@ body {
   --active-categoriesListItemLink-text: #0f172a;
 
   /* Article Card */
-  --articleCard-text: #7d838c;
+  --articleCard-text: #64748b;
   --articleCard-header: #020817;
   --articleCard-border: #cbd5e4;
 
@@ -108,6 +111,9 @@ body {
   --go-back-home-background: #182334;
   --go-back-home-text: #f6f8fa;
   --contact-us-text: #f6f8fa;
+  --msgNotFound-text: #f8fafc;
+  --msgVisitHomePage-text: #f8fafc;
+  --contactUs-text: #f8fafc;
 
   /* Navbar */
   --nav-background: #020817;

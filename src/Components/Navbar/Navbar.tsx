@@ -70,7 +70,7 @@ const Navbar = () => {
         .then((data) => {
           setTemp(data.main.temp);
           Cookies.set("userTempInfo", JSON.stringify(data.main.temp), {
-            expires: 1,
+            expires: 1 / 24,
           });
         })
         .catch((error) => {

@@ -7,17 +7,10 @@ import { ParamsType } from "@/lib/types/paramsType";
 const DisplayPostsByTags = async ({ params }: ParamsType) => {
   const tags = await GetTags();
   const id = (await params).id;
-
   if (!tags.some((tag: TagType) => tag.slug === id)) {
     notFound();
   }
-  return (
-    <ArticlePreviewSectionWrapper
-      category=""
-      tag={id}
-      categoryToExclude={[""]}
-    />
-  );
+  return <ArticlePreviewSectionWrapper category="" tag={id} />;
 };
 
 export default DisplayPostsByTags;

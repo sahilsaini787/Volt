@@ -10,13 +10,7 @@ const DisplayPostsByCategory = async ({ params }: ParamsType) => {
   if (!categories.some((category: CategoryType) => category.slug === id)) {
     notFound();
   }
-  return (
-    <ArticlePreviewSectionWrapper
-      category={id}
-      tag=""
-      categoryToExclude={[""]}
-    />
-  );
+  return <ArticlePreviewSectionWrapper category={id} tag="" />;
 };
 
 export default DisplayPostsByCategory;

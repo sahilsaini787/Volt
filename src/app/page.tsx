@@ -12,10 +12,11 @@ export default async function Home() {
     <div className={styles.contentWrapper}>
       <CategoriesBar categories={categories} />
       <div className={styles.page}>
+        {/* 143 is ID of "Learning" category */}
         <ArticlePreviewSectionWrapper
+          categoryToExclude={"143"}
           category=""
           tag=""
-          categoryToExclude={[""]}
         />
         <PopularTagsWrapper />
       </div>

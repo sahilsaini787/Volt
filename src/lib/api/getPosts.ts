@@ -2,13 +2,13 @@ export async function GetPosts(
   category: string | null = "",
   tag: string | null = "",
   author: string | null = "",
-  excludeCategories: string[] | null = [""]
+  categoryToExclude: string | null = ""
 ) {
   const postsQuery: string = `
-query GetPosts($category: String, $tag: String, $author: String, $excludeCategories: [ID]) {
+query GetPosts($category: String, $tag: String, $author: String, $categoryToExclude: [ID]) {
    posts(where: 
     { 
-      categoryName: $category, tag: $tag, authorName: $author, categoryNotIn: $excludeCategories
+      categoryName: $category, tag: $tag, authorName: $author, categoryNotIn: $categoryToExclude
     }, first: 60) {
      nodes {
        featuredImage {
@@ -71,7 +71,7 @@ query GetPosts($category: String, $tag: String, $author: String, $excludeCategor
       },
       body: JSON.stringify({
         query: postsQuery,
-        variables: { category, tag, author, excludeCategories },
+        variables: { category, tag, author, categoryToExclude },
       }),
       cache: "force-cache",
     });
