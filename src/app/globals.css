@@ -100,6 +100,7 @@ body {
   --footer-list-item-text: #64748b;
   --footerLogo: #2e3441;
   --footer-header: #2e3441;
+  --footer-list-item-hover-text: #020817;
 }
 
 /* Define dark theme */
@@ -181,4 +182,5 @@ body {
   --footer-list-item-text: #94a3b8;
   --footerLogo: #f8fafc;
   --footer-header: #f3f5f7;
+  --footer-list-item-hover-text: #f8fafc;
 }

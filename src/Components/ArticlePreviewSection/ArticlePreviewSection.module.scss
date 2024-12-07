@@ -21,6 +21,8 @@
 
 @media (min-width: 540px) {
   .articleContainer {
+    padding-bottom: 3rem;
+
     .articleGrid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -34,6 +36,8 @@
 @media (min-width: 728px) {
   .articleContainer {
     padding: 0rem;
+    padding-bottom: 3rem;
+
     margin: auto;
     .articleGrid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -69,5 +73,6 @@
   .articleContainer {
     margin: auto;
     padding: 0;
+    padding-bottom: 3rem;
   }
 }
