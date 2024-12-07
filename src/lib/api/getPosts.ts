@@ -73,7 +73,7 @@ query GetPosts($category: String, $tag: String, $author: String, $categoryToExcl
         query: postsQuery,
         variables: { category, tag, author, categoryToExclude },
       }),
-      cache: "force-cache",
+      next: { revalidate: 90 },
     });
 
     if (!response.ok) {

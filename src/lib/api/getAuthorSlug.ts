@@ -1,38 +1,18 @@
-export async function GetArticle(slug: string) {
-  const articleQuery: string = `
-query getArticle($slug: ID!) {
-  post(id:$slug, idType: SLUG) {
-    id
-    slug
-    content
-    author {
-      node {
-        firstName
-        lastName
-        slug
-        id
-        description
-        avatar {
-          url
-        }
-      }
-    }
-    date
-    title
-    featuredImage {
-      node {
-        altText
-        mediaItemUrl
-      }
-    }
-   }
- }
-`;
-
+export async function GetAuthorSlug() {
   const apiURL = process.env.GRAPHQL_API_URL;
   if (!apiURL) {
     throw new Error("GraphQL api url is not defined");
   }
+
+  const authorSlugQuery: string = `
+    query GetAuthorSlug {
+        users(where: {hasPublishedPosts: POST}) {
+            nodes {
+                slug
+            }
+        }
+    }
+  `;
 
   try {
     const response = await fetch(apiURL, {
@@ -41,8 +21,7 @@ query getArticle($slug: ID!) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        query: articleQuery,
-        variables: { slug },
+        query: authorSlugQuery,
       }),
       next: { revalidate: 90 },
     });
@@ -52,7 +31,11 @@ query getArticle($slug: ID!) {
     }
 
     const { data } = await response.json();
-    return data.post;
+    if (!data || !data.users) {
+      throw new Error("Invalid GraphQL response: Missing authorSlug data.");
+    }
+
+    return data.users.nodes;
   } catch (error) {
     console.log("Fetch Error: " + error);
   }

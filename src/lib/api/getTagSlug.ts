@@ -1,4 +1,4 @@
-export async function GetTags() {
+export async function GetTagSlug() {
   const apiURL = process.env.GRAPHQL_API_URL;
   if (!apiURL) {
     throw new Error("GRAPHQL_API_URL is not defined.");
@@ -12,16 +12,13 @@ export async function GetTags() {
       },
       body: JSON.stringify({
         query: `
-              query getTags {
-                tags(where: {orderby: COUNT, order: DESC}, first: 10) {
-                  nodes {
-                    name
-                    id
-                    slug
-                    count
+                query getTagSlug {
+                  tags(where: {orderby: COUNT, order: DESC}, first: 10) {
+                    nodes {
+                      slug
+                    }
                   }
-                }
-              }`,
+                }`,
       }),
       next: { revalidate: 90 },
     });

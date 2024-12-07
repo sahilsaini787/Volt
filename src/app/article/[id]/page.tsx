@@ -4,6 +4,15 @@ import ArticlePage from "@/Components/ArticlePage/ArticlePage";
 import { articlePageType } from "@/lib/types/articlePageType";
 import { ParamsType } from "@/lib/types/paramsType";
 import { Metadata } from "next";
+import { GetArticleSlug } from "@/lib/api/getArticleSlug";
+
+export const revalidate = 90;
+
+export async function generateStaticParams() {
+  //143 is "Learning" category id so we exclude that when searching for all the articles because it has a different tab
+  const possibleIds: Array<{ slug: string }> = await GetArticleSlug("143"); //GetArticleSlug(<CategoryID to exclude>)
+  return possibleIds.map((id) => ({ id: id.slug }));
+}
 
 export async function generateMetadata({
   params,

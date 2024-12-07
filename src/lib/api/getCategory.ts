@@ -23,7 +23,7 @@ export async function GetCategories() {
               }
             }`,
       }),
-      cache: "force-cache",
+      next: { revalidate: 90 },
     });
 
     if (!response.ok) {

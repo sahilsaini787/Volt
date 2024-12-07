@@ -7,6 +7,15 @@ import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/Art
 import { notFound } from "next/navigation";
 import { ParamsType } from "@/lib/types/paramsType";
 
+// revalidate the site every 90s instead of rebuilding entire page
+export const revalidate = 90;
+
+//generate page statically based on url
+export async function generateStaticParams() {
+  const possibleIds = ["", "tools", "learn"];
+  return possibleIds.map((id) => ({ id }));
+}
+
 const DisplayPosts = async ({ params }: ParamsType) => {
   const categories: CategoriesType = await GetCategories();
   const id = (await params).id;

@@ -5,6 +5,8 @@ import { GetCategories } from "@/lib/api/getCategory";
 import { CategoriesType } from "@/lib/types/categories";
 import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
 
+export const revalidate = 90;
+
 export default async function Home() {
   const categories: CategoriesType = await GetCategories();
 

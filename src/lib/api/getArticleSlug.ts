@@ -1,33 +1,16 @@
-export async function GetArticle(slug: string) {
-  const articleQuery: string = `
-query getArticle($slug: ID!) {
-  post(id:$slug, idType: SLUG) {
-    id
-    slug
-    content
-    author {
-      node {
-        firstName
-        lastName
-        slug
-        id
-        description
-        avatar {
-          url
+export async function GetArticleSlug(categoryToExclude: string | null = "") {
+  const postsSlugQuery: string = `
+  query GetPostsSlug($categoryToExclude: [ID]) {
+     posts(where: 
+      { 
+        categoryNotIn: $categoryToExclude
+      }, first: 60) {
+       nodes {
+         slug
         }
-      }
-    }
-    date
-    title
-    featuredImage {
-      node {
-        altText
-        mediaItemUrl
-      }
-    }
+     }
    }
- }
-`;
+  `;
 
   const apiURL = process.env.GRAPHQL_API_URL;
   if (!apiURL) {
@@ -41,8 +24,8 @@ query getArticle($slug: ID!) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        query: articleQuery,
-        variables: { slug },
+        query: postsSlugQuery,
+        variables: { categoryToExclude },
       }),
       next: { revalidate: 90 },
     });
@@ -52,7 +35,11 @@ query getArticle($slug: ID!) {
     }
 
     const { data } = await response.json();
-    return data.post;
+    if (!data || !data.posts) {
+      throw new Error("Invalid GraphQL response: Missing posts slug data.");
+    }
+
+    return data.posts.nodes;
   } catch (error) {
     console.log("Fetch Error: " + error);
   }
