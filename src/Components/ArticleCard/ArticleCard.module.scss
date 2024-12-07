@@ -29,6 +29,13 @@
       font-size: 1.1rem;
       font-weight: 500;
       color: var(--articleCard-header);
+
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
     }
 
     //don't display for mobile devices.
