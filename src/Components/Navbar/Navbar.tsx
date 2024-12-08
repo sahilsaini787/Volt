@@ -26,7 +26,7 @@ const Navbar = () => {
             const longitude = position.coords.longitude;
 
             Cookies.set("userLocation", `${latitude},${longitude}`, {
-              expires: 1,
+              expires: 1 / 24,
             });
           },
           function (error) {

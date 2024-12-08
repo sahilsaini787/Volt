@@ -2,7 +2,7 @@
   grid-column: 1 / span 4;
   width: 100%;
   height: fit-content;
-  padding: 0 0.5rem;
+  // padding: 0 0.5rem;
   padding-bottom: 3rem;
 
   .articleGrid,
@@ -10,7 +10,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 2rem;
+    row-gap: 1.2rem;
     column-gap: 2rem;
   }
 

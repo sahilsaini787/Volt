@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import styles from "@/Components/Navbar/NavbarMenu/NavbarMenu.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const menuList = [
@@ -24,6 +24,7 @@ export default function NavbarMenu() {
   const [activeTab, setActiveTab] = useState<string>(currentPathname);
   const [showDropdownMenu, setShowDorpdownMenu] = useState<boolean>(false);
   const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsTouchDevice(navigator.maxTouchPoints > 0);
@@ -31,13 +32,40 @@ export default function NavbarMenu() {
 
   useEffect(() => {
     handleActiveTab(currentPathname);
+
+    //hide the dropdown menu when the user visits a new page
+    setShowDorpdownMenu(false);
   }, [currentPathname]);
 
   function handleActiveTab(menuItem: string) {
     setActiveTab(menuItem);
   }
+
+  //for handeling click outside the dropdown menu area.
+  //So that the dropdown menu on mobile devices disappears when
+  //the user clicks anywhere else.
+  useEffect(() => {
+    if (isTouchDevice) {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (
+          dropdownRef.current &&
+          !dropdownRef.current.contains(event.target as Node)
+        ) {
+          setShowDorpdownMenu(false);
+        }
+      };
+
+      document.addEventListener("click", handleClickOutside);
+
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    }
+  }, [isTouchDevice]);
+
   return (
     <div
+      ref={dropdownRef}
       className={styles.navMenu}
       onPointerOver={
         !isTouchDevice ? () => setShowDorpdownMenu(true) : undefined
@@ -50,10 +78,8 @@ export default function NavbarMenu() {
         className={styles.activeNavMenuItem}
         onClick={() => setShowDorpdownMenu(!showDropdownMenu)}
       >
-        {activeTab === ""
-          ? "Blogs"
-          : menuList.filter((menuItem) => menuItem.href === activeTab)[0]
-              ?.title}
+        {menuList.filter((menuItem) => menuItem.href === activeTab)[0]?.title ||
+          "Blogs"}
         <svg
           viewBox="0 0 24 24"
           fill="none"
