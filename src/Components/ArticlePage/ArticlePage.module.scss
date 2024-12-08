@@ -10,6 +10,11 @@
   font-size: 1.2rem;
   color: var(--article-text);
 
+  pre {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
   .articleTitle {
     font-size: 2rem;
     font-weight: 700;

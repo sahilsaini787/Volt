@@ -27,6 +27,7 @@
         font-weight: 400;
         color: var(--authorName);
         padding-top: 1rem;
+        font-family: var(--font-roboto);
       }
       .authorDescription {
         color: var(--authorDescription);
@@ -49,8 +50,6 @@
       width: 100%;
       height: fit-content;
       padding-bottom: 3rem;
-      container-type: inline-size;
-      container-name: article-container;
 
       .articleList {
         width: 100%;
