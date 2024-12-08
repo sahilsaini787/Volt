@@ -1,8 +1,4 @@
 import styles from "@/app/page.module.scss";
-import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
-import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
-import { CategoriesType } from "@/lib/types/categories";
-import { GetCategories } from "@/lib/api/getCategory";
 import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
 import { notFound } from "next/navigation";
 import { ParamsType } from "@/lib/types/paramsType";
