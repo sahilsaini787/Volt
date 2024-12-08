@@ -59,7 +59,7 @@ const Navbar = () => {
       async function getWeatherData() {
         const OPEN_WEATHER_API_KEY = process.env.NEXT_PUBLIC_OPEN_WEATHER_API;
         const response = await fetch(
-          `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${OPEN_WEATHER_API_KEY}&units=metric`,
+          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${OPEN_WEATHER_API_KEY}&units=metric`,
           { method: "GET" }
         );
         const data = await response.json();
