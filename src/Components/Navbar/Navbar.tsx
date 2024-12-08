@@ -12,6 +12,7 @@ import Cookies from "js-cookie";
 const Navbar = () => {
   const [temp, setTemp] = useState<number>();
   const { themeMode } = useUserContext();
+  const [locationData, setLocationData] = useState<Array<number>>([0, 0]);
 
   //This is very ugly code. But it works for now.
   //I'll look for a better way to implement this in the meantime
@@ -28,6 +29,8 @@ const Navbar = () => {
             Cookies.set("userLocation", `${latitude},${longitude}`, {
               expires: 1 / 24,
             });
+
+            setLocationData([latitude, longitude]);
           },
           function (error) {
             console.error("Error getting location: ", error.message);
@@ -79,7 +82,7 @@ const Navbar = () => {
     } else {
       setTemp(JSON.parse(userTempInfo));
     }
-  }, []);
+  }, [locationData]);
 
   return (
     <div
