@@ -12,28 +12,13 @@ export const revalidate = 90;
 
 //generate page statically based on url
 export async function generateStaticParams() {
-  const possibleIds = ["", "tools", "learn"];
+  const possibleIds = ["tools", "learn"];
   return possibleIds.map((id) => ({ id }));
 }
 
 const DisplayPosts = async ({ params }: ParamsType) => {
-  const categories: CategoriesType = await GetCategories();
   const id = (await params).id;
   switch (id) {
-    case "":
-      return (
-        <div className={styles.contentWrapper}>
-          <CategoriesBar categories={categories} />
-          <div className={styles.page}>
-            <ArticlePreviewSectionWrapper
-              categoryToExclude={"143"}
-              category=""
-              tag=""
-            />
-            <PopularTagsWrapper />
-          </div>
-        </div>
-      );
     case "tools":
       return (
         <div className={styles.contentWrapper}>
