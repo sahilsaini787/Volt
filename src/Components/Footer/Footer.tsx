@@ -1,15 +1,15 @@
 import Link from "next/link";
-
-import { GetTags } from "@/lib/api/getTags";
-import { GetCategories } from "@/lib/api/getCategory";
+import styles from "@/Components/Footer/Footer.module.scss";
 import { TagsType } from "@/lib/types/tags";
 import { CategoriesType } from "@/lib/types/categories";
-import styles from "@/Components/Footer/Footer.module.scss";
 
-export default async function Footer() {
-  const tags: TagsType = await GetTags();
-  const categories: CategoriesType = await GetCategories();
-
+export default function Footer({
+  tags,
+  categories,
+}: {
+  tags: TagsType;
+  categories: CategoriesType;
+}) {
   return (
     <div className={styles.footerMain}>
       <div className={styles.footerContainer}>

@@ -7,6 +7,10 @@ import { Roboto, Source_Serif_4, Inter, Open_Sans } from "next/font/google";
 import type { Metadata } from "next";
 import UserPrefsContext from "@/context/UserPrefsContext";
 import { cookies } from "next/headers";
+import { TagsType } from "@/lib/types/tags";
+import { CategoriesType } from "@/lib/types/categories";
+import { GetTags } from "@/lib/api/getTags";
+import { GetCategories } from "@/lib/api/getCategory";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -56,6 +60,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const tags: TagsType = await GetTags();
+  const categories: CategoriesType = await GetCategories();
   const cookieStore = await cookies();
 
   const storedLayoutStyle: LayoutStyleType =
@@ -79,7 +85,7 @@ export default async function RootLayout({
             <Navbar />
             {children}
             <BackToTopButton />
-            <Footer />
+            <Footer tags={tags} categories={categories} />
           </div>
         </UserPrefsContext>
       </body>

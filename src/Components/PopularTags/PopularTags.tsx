@@ -21,30 +21,32 @@ const PopularTags = ({ tags }: { tags: TagsType }) => {
   }
 
   return (
-    <div
-      className={`${styles.popularTagsContainer} ${themeMode === "light" ? styles.lightMode : styles.darkMode}`}
-    >
-      {tags ? (
-        <>
-          <div className={styles.popularTagsHeader}>
-            <span>POPULAR TAGS</span>
-          </div>
-          <div className={styles.tagsListContainer}>
-            <ul className={styles.tagsList}>
-              {tags.map((tag) => (
-                <li key={tag.id} className={`${styles.tagsListItem}`}>
-                  <Link
-                    href={`/tag/${tag.slug}`}
-                    className={`${styles.tagsListItemLink} ${activeTag === `/tag/${tag.slug}` ? styles.setActiveTag : ""}`}
-                  >
-                    {tag.name} · {tag.count}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </>
-      ) : null}
+    <div>
+      <div
+        className={`${styles.popularTagsContainer} ${themeMode === "light" ? styles.lightMode : styles.darkMode}`}
+      >
+        {tags ? (
+          <>
+            <div className={styles.popularTagsHeader}>
+              <span>POPULAR TAGS</span>
+            </div>
+            <div className={styles.tagsListContainer}>
+              <ul className={styles.tagsList}>
+                {tags.map((tag) => (
+                  <li key={tag.id} className={`${styles.tagsListItem}`}>
+                    <Link
+                      href={`/tag/${tag.slug}`}
+                      className={`${styles.tagsListItemLink} ${activeTag === `/tag/${tag.slug}` ? styles.setActiveTag : ""}`}
+                    >
+                      {tag.name} · {tag.count}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        ) : null}
+      </div>
     </div>
   );
 };

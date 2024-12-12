@@ -1,7 +1,8 @@
 import styles from "@/app/page.module.scss";
-import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
 import { notFound } from "next/navigation";
 import { ParamsType } from "@/lib/types/paramsType";
+import ArticlePreviewSection from "@/Components/ArticlePreviewSection/ArticlePreviewSection";
+import { GetPosts } from "@/lib/api/getPosts";
 
 // revalidate the site every 90s instead of rebuilding entire page
 export const revalidate = 90;
@@ -13,6 +14,8 @@ export async function generateStaticParams() {
 }
 
 const DisplayPosts = async ({ params }: ParamsType) => {
+  const postsData = await GetPosts("Learning", "", "", "");
+
   const id = (await params).id;
   switch (id) {
     case "tools":
@@ -25,7 +28,7 @@ const DisplayPosts = async ({ params }: ParamsType) => {
       return (
         <div className={styles.contentWrapper}>
           <div className={styles.page}>
-            <ArticlePreviewSectionWrapper category="Learning" tag="" />
+            <ArticlePreviewSection posts={postsData} />
           </div>
         </div>
       );
