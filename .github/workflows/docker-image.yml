@@ -21,6 +21,11 @@ jobs:
     
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag sahilsaini787/volt:latest
+      env: 
+        GRAPHQL_API_URL: ${{ secrets.GRAPHQL_API_URL }}
+        NEXT_PUBLIC_OPEN_WEATHER_API: ${{ secrets.NEXT_PUBLIC_OPEN_WEATHER_API }}
+        SITE_URL: ${{ secrets.SITE_URL }}
+
 
     - name: Push Docker image to Dockerhub
       run: | 
