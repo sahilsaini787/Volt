@@ -32,6 +32,12 @@ jobs:
         run: |
           docker push sahilsaini787/volt:latest
 
+  remote-login:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
       - name: SSH Remote Commands for accessing the VM
         uses: appleboy/ssh-action@v1.2.0
         with:
@@ -49,5 +55,5 @@ jobs:
             docker stop volt || true
             docker rm volt || true
             docker run -d --name volt \
-              -p 3000:3000
-            "$IMAGE_NAME:$LATEST_TAG"
+              -p 3000:3000v \
+              "$IMAGE_NAME:$LATEST_TAG"
