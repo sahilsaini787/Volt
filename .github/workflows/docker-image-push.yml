@@ -53,8 +53,10 @@ jobs:
 
             #pull latest image and rebuild container
             docker pull "$IMAGE_NAME:$LATEST_TAG"
-            docker stop volt || true
-            docker rm volt || true
-            docker run -d --name volt \
-              -p 3000:3000 \
-              "$IMAGE_NAME:$LATEST_TAG"
+
+            cd ../azure-user/app/
+
+            # Bring down the running containers
+            docker-compose down
+            # Recreate the containers using the latest image
+            docker-compose up -d
