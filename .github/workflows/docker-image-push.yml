@@ -38,6 +38,8 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           password: ${{ secrets.VM_PASSWORD }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+
           script: |
             IMAGE_NAME="sahilsaini787/volt"
             LATEST_TAG="latest"
