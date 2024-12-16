@@ -33,6 +33,7 @@ jobs:
           docker push sahilsaini787/volt:latest
 
   remote-login:
+    needs: build-and-push
     runs-on: ubuntu-latest
 
     steps:
@@ -55,5 +56,5 @@ jobs:
             docker stop volt || true
             docker rm volt || true
             docker run -d --name volt \
-              -p 3000:3000v \
+              -p 3000:3000 \
               "$IMAGE_NAME:$LATEST_TAG"
