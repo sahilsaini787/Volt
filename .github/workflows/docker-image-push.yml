@@ -1,0 +1,51 @@
+name: Docker Image CI/CD
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Docker Login
+        uses: docker/login-action@v3.3.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build the Docker image
+        run: |
+          docker build . \
+            --file Dockerfile \
+            --tag sahilsaini787/volt:latest \
+            --build-arg GRAPHQL_API_URL=${{ secrets.GRAPHQL_API_URL }} \
+            --build-arg NEXT_PUBLIC_OPEN_WEATHER_API=${{ secrets.NEXT_PUBLIC_OPEN_WEATHER_API }} \
+            --build-arg SITE_URL=${{ secrets.SITE_URL }}
+
+      - name: Push Docker image to Dockerhub
+        run: |
+          docker push sahilsaini787/volt:latest
+
+      - name: SSH Remote Commands for accessing the VM
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          password: ${{ secrets.VM_PASSWORD }}
+          script: |
+            IMAGE_NAME="sahilsaini787/volt"
+            LATEST_TAG="latest"
+
+            #pull latest image and rebuild container
+            docker pull "$IMAGE_NAME:$LATEST_TAG"
+            docker stop volt || true
+            docker rm volt || true
+            docker run -d --name volt \
+              -p 3000:3000
+            "$IMAGE_NAME:$LATEST_TAG"
