@@ -87,7 +87,7 @@ export default function Footer({
         {categories ? (
           <div className={styles.footer_categories}>
             <div className={styles.footer_categoriesHeader}>
-              <h4>CATEGORIES</h4>
+              <h4>CHOCOLATE</h4>
             </div>
             <div className={styles.footer_categoriesListContainer}>
               <ul className={styles.footer_categoriesList}>
